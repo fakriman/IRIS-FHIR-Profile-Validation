@@ -1,0 +1,64 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "VSEspecialidadesDeisCL",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/VSEspecialidadesDeisCL",
+  "version": "0.1.0",
+  "name": "EspecialidadCL",
+  "title": "Especialidad del médico principal",
+  "status": "active",
+  "description": "Esta extensión incluye los códigos de las especialidades que puede tener el medico principal",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Especialidad del médico principal",
+        "definition": "Esta extensión incluye los códigos de las especialidades que puede tener el medico principal"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/VSEspecialidadesDeisCL"
+      },
+      {
+        "id": "Extension.valueCoding",
+        "path": "Extension.valueCoding",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSEspecialidadesDeisCL"
+        }
+      }
+    ]
+  }
+}

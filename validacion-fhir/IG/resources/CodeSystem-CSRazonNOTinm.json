@@ -1,0 +1,53 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSRazonNOinmunizacionCL",
+  "id": "CSRazonNOTinm",
+  "title": "Razones no Inmunización",
+  "description": "Códigos de las razones por la cual el registro de inmunización no pudo realizarse según indicaciones del Ministerio de Salud",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSRazonNOTinm",
+  "concept": [
+    {
+      "code": "solicitudPaci",
+      "display": "Solicitud del paciente"
+    },
+    {
+      "code": "otras",
+      "display": "Otras"
+    },
+    {
+      "code": "contraindicación",
+      "display": "Contraindicación"
+    },
+    {
+      "code": "solicitudPad",
+      "display": "Solicitud de los Padres"
+    }
+  ],
+  "date": "2022-06-10T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 4
+}

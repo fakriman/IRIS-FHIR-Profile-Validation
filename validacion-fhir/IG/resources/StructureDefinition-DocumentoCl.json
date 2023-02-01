@@ -1,0 +1,483 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "DocumentoCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Foundation.Documents"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "not-classified"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/DocumentoCl",
+  "version": "0.1.0",
+  "name": "DocumentoCl",
+  "title": "CL Documento",
+  "status": "active",
+  "description": "Definición de un documento para Resumen de Historia o Registro de Encuentro para Historia Clínica, basado en IPS.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "cda",
+      "uri": "http://hl7.org/v3/cda",
+      "name": "CDA (R2)"
+    },
+    {
+      "identity": "fhirdocumentreference",
+      "uri": "http://hl7.org/fhir/documentreference",
+      "name": "FHIR DocumentReference"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Composition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Composition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Composition.identifier",
+        "path": "Composition.identifier",
+        "short": "Identificador local para recurso de documeto que puede ser distinto para cada versión del mismo",
+        "definition": "Identificador para el recurso que contiene documento, puede ser usado de manera local. Este idetificador es independiente de la versión del documento",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.status",
+        "path": "Composition.status",
+        "short": "Estado, valores posibles: preliminary | final | amended | entered-in-error",
+        "definition": "Estado del documento",
+        "patternCode": "final",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.type",
+        "path": "Composition.type",
+        "short": "Tipo de Documento según especificación de LOINC (Ej para Summarie IPS Loinc = #60591-5",
+        "definition": "Especifica el tipo de documento al que refiere este Recurso. Si se desea ajustar a IPS debe ser un resumen con código LOINC 60591-5",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSTiposDocClinic"
+        }
+      },
+      {
+        "id": "Composition.subject",
+        "path": "Composition.subject",
+        "short": "Paciente sobre el cual se ha generado este documento. Este debe ser basado en el perfil del paciente Chileno.",
+        "definition": "Paciente sobre el cual se ha generado este documento. Este debe ser basado en el perfil de paciente Chileno.",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.subject.reference",
+        "path": "Composition.subject.reference",
+        "short": "Corresponde al paciente",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.encounter",
+        "path": "Composition.encounter",
+        "short": "Contexto del Documento.",
+        "definition": "Contexto en el cual se desarrolló el documento.",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.encounter.reference",
+        "path": "Composition.encounter.reference",
+        "short": "Corresponde al paciente",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.encounter.identifier",
+        "path": "Composition.encounter.identifier",
+        "short": "Identificador, en formato identifier para el encuentro",
+        "definition": "Identificador, en su formato correspondiente, que reemplaza el uso de un recurso referenciado en caso de no contar con este",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.encounter.display",
+        "path": "Composition.encounter.display",
+        "short": "texto que describe el contexto del documento",
+        "definition": "Texto descriptivo que reemplaza el no contar con un recurso a refereciar o con id de encuetro",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.date",
+        "path": "Composition.date",
+        "short": "Fecha en la cual se editó el documento",
+        "definition": "Fecha de edición del documento, cuando este fue modificado por el autor",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.author",
+        "path": "Composition.author",
+        "short": "Quien Ha creado el documento",
+        "definition": "Identifica al responsable de los datos ingresados al documento, en este caso será el responsable del Resumen.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Practitioner"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.title",
+        "path": "Composition.title",
+        "short": "Título del documento generado",
+        "definition": "Título oficial del documento para que pueda ser legible.",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.attester",
+        "path": "Composition.attester",
+        "short": "Validadores del documento",
+        "definition": "Validadores del documento",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.attester.mode",
+        "path": "Composition.attester.mode",
+        "short": "Labor del Validador personal|profesional|legal|official",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/composition-attestation-mode"
+        }
+      },
+      {
+        "id": "Composition.attester.time",
+        "path": "Composition.attester.time",
+        "short": "Fecha y Hora de la validación",
+        "definition": "Fecha y Hora de la validación",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.attester.party",
+        "path": "Composition.attester.party",
+        "short": "Quien validó",
+        "definition": "Quien validó",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section",
+        "path": "Composition.section",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "pattern",
+              "path": "code"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Sección del documento",
+        "definition": "Sección de notificación de datos clínicos.",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section.code",
+        "path": "Composition.section.code",
+        "min": 1,
+        "mustSupport": true,
+        "binding": {
+          "strength": "example",
+          "valueSet": "http://hl7.org/fhir/ValueSet/doc-section-codes"
+        }
+      },
+      {
+        "id": "Composition.section:sectionDiagnosticos",
+        "path": "Composition.section",
+        "sliceName": "sectionDiagnosticos",
+        "short": "Sección Diagnósticos",
+        "definition": "Descripción de lista de diagnósticos determinados en el paciente.",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionDiagnosticos.title",
+        "path": "Composition.section.title",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionDiagnosticos.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "11450-4",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:sectionDiagnosticos.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "Diagnósticos conocidos actualmente de relevancia para determinaciones clínicas en el paciente.",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionMedicamentos",
+        "path": "Composition.section",
+        "sliceName": "sectionMedicamentos",
+        "short": "Sección Medicamentos",
+        "definition": "Descripción de lista de medicamentos activos, consumidos o pendientes del paciente.",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionMedicamentos.title",
+        "path": "Composition.section.title",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionMedicamentos.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "10160-0",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:sectionMedicamentos.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "Referencia al Medicamento Prescrito al paciente.",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/MedicationStatement"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionAlergias",
+        "path": "Composition.section",
+        "sliceName": "sectionAlergias",
+        "short": "Sección Alergias y Reacciones Adversas",
+        "definition": "Descripción de lista de Alergias y Eventos Adversos del Paciente, su grado de criticidad.",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionAlergias.title",
+        "path": "Composition.section.title",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionAlergias.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "48765-2",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:sectionAlergias.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "Alergias e Intolerancia descrita",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionObservacionEmbarazo",
+        "path": "Composition.section",
+        "sliceName": "sectionObservacionEmbarazo",
+        "short": "Sección Antecedentes de Embarazo",
+        "definition": "Descripción de las condiciones clínicas de los embarazos.",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionObservacionEmbarazo.title",
+        "path": "Composition.section.title",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionObservacionEmbarazo.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "10162-6",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:sectionObservacionEmbarazo.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "Descripción del antecedente de embarzo",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Observation"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionObservacionSignosVitales",
+        "path": "Composition.section",
+        "sliceName": "sectionObservacionSignosVitales",
+        "short": "Sección de Signos Vitales Medidos",
+        "definition": "Descripción de las mediciones fisiológicas hechas al paciente",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionObservacionSignosVitales.title",
+        "path": "Composition.section.title",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Composition.section:sectionObservacionSignosVitales.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "8716-3",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:sectionObservacionSignosVitales.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "Descripción del los signos vitales y mediciones desarrolladas",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Observation"
+            ]
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

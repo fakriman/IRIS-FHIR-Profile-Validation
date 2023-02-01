@@ -1,0 +1,12 @@
+{
+  "resourceType": "Observation",
+  "id": "123",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org#10244-2"
+      }
+    ]
+  }
+}

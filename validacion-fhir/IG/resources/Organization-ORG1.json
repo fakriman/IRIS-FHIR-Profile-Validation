@@ -1,0 +1,38 @@
+{
+  "resourceType": "Organization",
+  "id": "ORG1",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreOrganizacionCl"
+    ]
+  },
+  "active": true,
+  "identifier": [
+    {
+      "system": "http://minsal.cl/deis/codigodeis",
+      "value": "1233"
+    }
+  ],
+  "name": "Centro de Salud Familiar Rio Bueno de Linares",
+  "alias": [
+    "Rio Bueno CESFAM"
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "work",
+      "value": "45325775"
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "Calle Central 33"
+      ],
+      "city": "07401",
+      "district": "074",
+      "state": "07",
+      "country": "152"
+    }
+  ]
+}

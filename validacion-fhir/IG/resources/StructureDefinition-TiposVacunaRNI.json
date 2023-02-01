@@ -1,0 +1,65 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "TiposVacunaRNI",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposVacunaRNI",
+  "version": "0.1.0",
+  "name": "TiposVacunaCL",
+  "title": "Código de tipos de Vacunas en Chile",
+  "status": "active",
+  "description": "Esta extensión incluye códigos de los tipos de vacunas que existe en el Registro Nacional de Inmunizaciones RNI",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Código de tipos de Vacunas en Chile",
+        "definition": "Esta extensión incluye códigos de los tipos de vacunas que existe en el Registro Nacional de Inmunizaciones RNI"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposVacunaRNI"
+      },
+      {
+        "id": "Extension.valueCode",
+        "path": "Extension.valueCode",
+        "short": "Valor de la extensión",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSTiposVacunas"
+        }
+      }
+    ]
+  }
+}

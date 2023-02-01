@@ -1,0 +1,64 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "TiposEncuentro",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposEncuentro",
+  "version": "0.1.0",
+  "name": "TiposEncuentroRemotoCL",
+  "title": "Código de tipos de encuentro remoto",
+  "status": "active",
+  "description": "Esta extensión incluye códigos de los tipos de encuentro que se realizan de forma remota",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Código de tipos de encuentro remoto",
+        "definition": "Esta extensión incluye códigos de los tipos de encuentro que se realizan de forma remota"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposEncuentro"
+      },
+      {
+        "id": "Extension.valueCode",
+        "path": "Extension.valueCode",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSTiposEncuentroCL"
+        }
+      }
+    ]
+  }
+}

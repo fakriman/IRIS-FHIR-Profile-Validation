@@ -1,0 +1,57 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSRazonNOencuentroCL",
+  "id": "CSRazonNOT",
+  "title": "Razones Cancelación Atención Remota",
+  "description": "Códigos de las razones por la cual un encuentro remoto no pudo realizarse según indicaciones del Ministerio de Salud",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSRazonNOT",
+  "concept": [
+    {
+      "code": "pierdeLlam",
+      "display": "El participante pierde la llamada"
+    },
+    {
+      "code": "finaLlam",
+      "display": "El participante finalizó la llamada abruptamente"
+    },
+    {
+      "code": "problConex",
+      "display": "El participante tuvo problemas de conexión a internet"
+    },
+    {
+      "code": "medproblConex",
+      "display": "Tuve problemas de conexión a internet"
+    },
+    {
+      "code": "otros",
+      "display": "Otros / texto libre"
+    }
+  ],
+  "date": "2022-05-22T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 5
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26" zv="IRIS for Windows (x86-64) 2022.1 (Build 209U)" ts="2022-08-30 17:35:24">
+<Global>
+<Node><Sub>^HS.Registry.ConfigD</Sub>
+<Data>5</Data>
+<Node><Sub>1</Sub>
+<DataBase64>AgEiAS9GSElSL1ZhbGlkYXRpb24vUHJvZmlsZUxvY2F0aW9uSwFDOlxJbnRlclN5c3RlbXNcZmhp
+ci12YWxpZGF0aW9uXFNFTWVldGluZzIwMjItSUdcZnNoLWdlbmVyYXRlZFxyZXNvdXJjZXNc
+</DataBase64>
+</Node>
+<Node><Sub>2</Sub>
+<DataBase64>AgEkAS9GSElSL1ZhbGlkYXRpb24vSmF2YUdhdGV3YXlTZXJ2ZXILATEyNy4wLjAuMQ==
+</DataBase64>
+</Node>
+<Node><Sub>3</Sub>
+<DataBase64>AgEiAS9GSElSL1ZhbGlkYXRpb24vSmF2YUdhdGV3YXlQb3J0BwE1MzI3NQ==
+</DataBase64>
+</Node>
+<Node><Sub>4</Sub>
+<DataBase64>AgEkAS9GSElSL1ZhbGlkYXRpb24vVGVybWlub2xvZ3lTZXJ2ZXICAQ==
+</DataBase64>
+</Node>
+<Node><Sub>5</Sub>
+<DataBase64>AgEiAS9GSElSL1ZhbGlkYXRpb24vU2tpcElmTm9Qcm9maWxlAwEx
+</DataBase64>
+</Node>
+</Node>
+</Global>
+
+
+<Global>
+<Node><Sub>^HS.Registry.ConfigI</Sub>
+<Node><Sub>RegKeyIndex</Sub>
+<Node><Sub> /FHIR/VALIDATION/JAVAGATEWAYPORT</Sub>
+<Node><Sub>3</Sub>
+<DataBase64>AgEHATUzMjc1
+</DataBase64>
+</Node>
+</Node>
+<Node><Sub> /FHIR/VALIDATION/JAVAGATEWAYSERVER</Sub>
+<Node><Sub>2</Sub>
+<DataBase64>AgELATEyNy4wLjAuMQ==
+</DataBase64>
+</Node>
+</Node>
+<Node><Sub> /FHIR/VALIDATION/PROFILELOCATION</Sub>
+<Node><Sub>1</Sub>
+<DataBase64>AgFLAUM6XEludGVyU3lzdGVtc1xmaGlyLXZhbGlkYXRpb25cU0VNZWV0aW5nMjAyMi1JR1xmc2gt
+Z2VuZXJhdGVkXHJlc291cmNlc1w=
+</DataBase64>
+</Node>
+</Node>
+<Node><Sub> /FHIR/VALIDATION/SKIPIFNOPROFILE</Sub>
+<Node><Sub>5</Sub>
+<DataBase64>AgEDATE=
+</DataBase64>
+</Node>
+</Node>
+<Node><Sub> /FHIR/VALIDATION/TERMINOLOGYSERVER</Sub>
+<Node><Sub>4</Sub>
+<DataBase64>AgECAQ==
+</DataBase64>
+</Node>
+</Node>
+</Node>
+</Node>
+</Global>
+</Export>

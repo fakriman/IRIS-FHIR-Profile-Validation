@@ -1,0 +1,44 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "VSDiagnosticosSCT",
+  "id": "VSDiagnosticosSCT",
+  "title": "Diagnósticos SNOMED y Ausente o Desconocido",
+  "description": "Diagnósticos definidos en Snomed-CT.",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSDiagnosticosSCT",
+  "date": "2022-07-25T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct"
+      },
+      {
+        "system": "http://hl7.org/fhir/uv/ips/CodeSystem/absent-unknown-uv-ips"
+      }
+    ]
+  }
+}

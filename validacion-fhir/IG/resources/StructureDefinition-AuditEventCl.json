@@ -1,0 +1,244 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "AuditEventCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Foundation.Security"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "not-classified"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/AuditEventCl",
+  "version": "0.1.0",
+  "name": "AuditEventCl",
+  "title": "CL Auditoria",
+  "status": "active",
+  "description": "Perfil para genererar un recurso que permita desarrollar logs de auditoría en cuanto al acceso y manejo de recursos FHIR",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "dicom",
+      "uri": "http://nema.org/dicom",
+      "name": "DICOM Tag Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "w3c.prov",
+      "uri": "http://www.w3.org/ns/prov",
+      "name": "W3C PROV"
+    },
+    {
+      "identity": "fhirprovenance",
+      "uri": "http://hl7.org/fhir/provenance",
+      "name": "FHIR Provenance Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "AuditEvent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/AuditEvent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "AuditEvent.type",
+        "path": "AuditEvent.type",
+        "short": "Tipo/identificación del Evento",
+        "definition": "Identificador de una familia del evento. Por ejemplo, un elemento de menú, un programa, una regla, una política, un código de función, un nombre de aplicación o una URL. Identifica la función realizada.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/audit-event-type",
+          "description": "Eventos de auditoría descritos en DICOM"
+        }
+      },
+      {
+        "id": "AuditEvent.type.system",
+        "path": "AuditEvent.type.system",
+        "short": "CodeSystem de los códigos para tipo de Evento",
+        "definition": "Es el Sistema de Codificación sugerido por FHIR extensible a necesidades locales",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.type.code",
+        "path": "AuditEvent.type.code",
+        "short": "Código del tipo de registro",
+        "definition": "Display del código del ejemplo",
+        "fixedCode": "rest",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.type.display",
+        "path": "AuditEvent.type.display",
+        "short": "RESTful Operation",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.subtype",
+        "path": "AuditEvent.subtype",
+        "short": "Especificacion mas detallada del evento",
+        "definition": "Nivel mayor de profundidad del evento",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/audit-event-sub-type",
+          "description": "Códigos de DICOM"
+        }
+      },
+      {
+        "id": "AuditEvent.subtype.system",
+        "path": "AuditEvent.subtype.system",
+        "short": "Sistema de Códigos",
+        "definition": "Sistema de ejemplo de códigos que describen con mas detalle el evento",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.subtype.code",
+        "path": "AuditEvent.subtype.code",
+        "short": "Codigo",
+        "definition": "Codigo del Subtipo",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.subtype.display",
+        "path": "AuditEvent.subtype.display",
+        "short": "Nombre de la desripción del evento",
+        "definition": "Nombre de la desripción del evento",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.action",
+        "path": "AuditEvent.action",
+        "short": "Create| Read/View/Print | Update | Delete | Execute",
+        "definition": "Código de la acción",
+        "min": 1,
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/audit-event-action",
+          "description": "Códigos fijos extraídos de DICOM"
+        }
+      },
+      {
+        "id": "AuditEvent.period",
+        "path": "AuditEvent.period",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.recorded",
+        "path": "AuditEvent.recorded",
+        "short": "Momento cuando el evento fue guardado",
+        "definition": "Momento cuando el evento fue guardado",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.outcome",
+        "path": "AuditEvent.outcome",
+        "short": "Resultado de la operación",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/audit-event-outcome",
+          "description": "Códigos extraídos de DICOM"
+        }
+      },
+      {
+        "id": "AuditEvent.agent",
+        "path": "AuditEvent.agent",
+        "short": "Quienes actuaron en el evento",
+        "definition": "Mínimo debe indicar quien requirió del recurso",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.agent.who",
+        "path": "AuditEvent.agent.who",
+        "short": "Quien realizó la acción",
+        "definition": "Referencia al recurso o Identificación de quien realizó la acción",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.agent.requestor",
+        "path": "AuditEvent.agent.requestor",
+        "short": "indicador de si Who es quien requirió la acción",
+        "definition": "indicador de si Who es quien requirió la acción"
+      },
+      {
+        "id": "AuditEvent.agent.network",
+        "path": "AuditEvent.agent.network",
+        "short": "Ubicación de la Red de la Aplicación",
+        "definition": "Ubicación de red lógica para la actividad de la aplicación, si la actividad tiene una ubicación de red.",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.agent.network.address",
+        "path": "AuditEvent.agent.network.address",
+        "short": "Dirección del Punto de Acceso",
+        "definition": "Un identificador para el tipo de punto de acceso a la red que originó el evento de auditoría.",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.agent.network.type",
+        "path": "AuditEvent.agent.network.type",
+        "short": "Código del tipo de identificación",
+        "definition": "Un tipo de identificador para el tipo de punto de acceso a la red que originó el evento de auditoría.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/network-type",
+          "description": "Códigos extraídos de DICOM"
+        }
+      },
+      {
+        "id": "AuditEvent.source",
+        "path": "AuditEvent.source",
+        "short": "Quien reporta el evento",
+        "definition": "Sitio en donde se reporta el evento",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.source.observer",
+        "path": "AuditEvent.source.observer",
+        "short": "Entidad que reporta el evento",
+        "definition": "Identificación del Observador donde se reportó el evento",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.entity",
+        "path": "AuditEvent.entity",
+        "short": "Entidad que registra la ocurrencia del Evento",
+        "definition": "Entidad que registra la ocurrencia del Evento",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "AuditEvent.entity.what",
+        "path": "AuditEvent.entity.what",
+        "short": "Recurso o identificación de la entidad que registra la ocurrencia del evento",
+        "definition": "Recurso o identificación de la entidad que registra la ocurrencia del evento",
+        "min": 1,
+        "mustSupport": true
+      }
+    ]
+  }
+}

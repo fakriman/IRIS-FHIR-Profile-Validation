@@ -1,0 +1,136 @@
+{
+  "resourceType": "Composition",
+  "id": "CompositionCl-CarlosSalas",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/DocumentoCl"
+    ]
+  },
+  "status": "final",
+  "type": {
+    "coding": [
+      {
+        "code": "60591-5",
+        "system": "http://loinc.org",
+        "display": "Patient Summary Document"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/11"
+  },
+  "date": "2022-07-06T14:30:00+01:00",
+  "author": [
+    {
+      "reference": "Practitioner/3020"
+    }
+  ],
+  "title": "Resumen IPS para Carlos Salas - 06 JUL 2022",
+  "section": [
+    {
+      "title": "Diagnósticos",
+      "code": {
+        "coding": [
+          {
+            "code": "11450-4",
+            "system": "http://loinc.org",
+            "display": "Problem list - Reported"
+          }
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Asma</div>"
+      },
+      "entry": [
+        {
+          "reference": "Condition/1112"
+        }
+      ]
+    },
+    {
+      "title": "Medicamentos",
+      "code": {
+        "coding": [
+          {
+            "code": "10160-0",
+            "system": "http://loinc.org",
+            "display": "Hx of Medication use"
+          }
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Anastrozole/Cimicifuga</div>"
+      },
+      "entry": [
+        {
+          "reference": "MedicationStatement/354"
+        }
+      ]
+    },
+    {
+      "title": "Alergias",
+      "code": {
+        "coding": [
+          {
+            "code": "48765-2",
+            "system": "http://loinc.org",
+            "display": "Allergies and adverse reactions Document"
+          }
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Allergy to penicillin, high criticality, active</div>"
+      },
+      "entry": [
+        {
+          "reference": "AllergyIntolerance/222"
+        }
+      ]
+    },
+    {
+      "title": "Vacunas",
+      "code": {
+        "coding": [
+          {
+            "code": "11369-6",
+            "system": "http://loinc.org",
+            "display": "Hx of Immunization"
+          }
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Lista de las vacunas recibidas</div>"
+      },
+      "entry": [
+        {
+          "reference": "Immunization/999"
+        }
+      ]
+    },
+    {
+      "title": "Signos Vitales y Mediciones Fisiológicas",
+      "code": {
+        "coding": [
+          {
+            "code": "8716-3",
+            "system": "http://loinc.org",
+            "display": "Vital signs"
+          }
+        ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Vital signs</div>"
+      },
+      "entry": [
+        {
+          "reference": "Observation/123"
+        }
+      ]
+    }
+  ]
+}

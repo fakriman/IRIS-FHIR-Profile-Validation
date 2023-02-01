@@ -1,0 +1,169 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSCodigoDNI",
+  "id": "CSCodigoDNI",
+  "title": "Códigos de Documentos DNI para LATAM y el Caribe",
+  "description": "Códigos para los DNI de países de America Latina y el Caribe según indicaciones de VS HL7 de V3",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI",
+  "concept": [
+    {
+      "code": "NNBLZ",
+      "display": "Belice"
+    },
+    {
+      "code": "NNCRI",
+      "display": "Costa Rica"
+    },
+    {
+      "code": "NNSLV",
+      "display": "El Salvador"
+    },
+    {
+      "code": "NNGTM",
+      "display": "Guatemala"
+    },
+    {
+      "code": "NNHND",
+      "display": "Honduras"
+    },
+    {
+      "code": "NNMEX",
+      "display": "México"
+    },
+    {
+      "code": "NNNIC",
+      "display": "Nicaragua"
+    },
+    {
+      "code": "NNPAN",
+      "display": "Panamá"
+    },
+    {
+      "code": "NNARG",
+      "display": "Argentina"
+    },
+    {
+      "code": "NNBOL",
+      "display": "Bolivia"
+    },
+    {
+      "code": "NNBRA",
+      "display": "Brasil"
+    },
+    {
+      "code": "NNCOL",
+      "display": "Colombia"
+    },
+    {
+      "code": "NNECU",
+      "display": "Ecuador"
+    },
+    {
+      "code": "NNGUY",
+      "display": "Guyana"
+    },
+    {
+      "code": "NNPRY",
+      "display": "Paraguay"
+    },
+    {
+      "code": "NNPER",
+      "display": "Perú"
+    },
+    {
+      "code": "NNSUR",
+      "display": "Surinam"
+    },
+    {
+      "code": "NNURY",
+      "display": "Uruguay"
+    },
+    {
+      "code": "NNVEN",
+      "display": "Venezuela"
+    },
+    {
+      "code": "NNCHL",
+      "display": "Chile"
+    },
+    {
+      "code": "NNATG",
+      "display": "Antigua y Barbuda"
+    },
+    {
+      "code": "NNBHS",
+      "display": "Bahamas"
+    },
+    {
+      "code": "NNBRB",
+      "display": "Barbados"
+    },
+    {
+      "code": "NNCUB",
+      "display": "Cuba"
+    },
+    {
+      "code": "NNDMA",
+      "display": "Dominica"
+    },
+    {
+      "code": "NNGRD",
+      "display": "Granada"
+    },
+    {
+      "code": "NNHTI",
+      "display": "Haití"
+    },
+    {
+      "code": "NNJAM",
+      "display": "Jamaica"
+    },
+    {
+      "code": "NNDOM",
+      "display": "República Dominicana"
+    },
+    {
+      "code": "NNKNA",
+      "display": "San Cristóbal y Nieves"
+    },
+    {
+      "code": "NNLCA",
+      "display": "Santa Lucía"
+    },
+    {
+      "code": "NNVCT",
+      "display": "San Vicente y las Granadinas"
+    },
+    {
+      "code": "NNTTO",
+      "display": "Trinidad y Tobago"
+    }
+  ],
+  "date": "2022-01-18T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 33
+}

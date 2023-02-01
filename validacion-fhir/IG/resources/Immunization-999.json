@@ -1,0 +1,17 @@
+{
+  "resourceType": "Immunization",
+  "id": "999",
+  "status": "completed",
+  "patient": {
+    "reference": "Patient/11"
+  },
+  "vaccineCode": {
+    "coding": [
+      {
+        "code": "66071002",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  },
+  "occurrenceDateTime": "2022-07-06T14:30:00+01:00"
+}

@@ -1,0 +1,196 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoreDiagnosticoCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Clinical.Summary"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreDiagnosticoCl",
+  "version": "0.1.0",
+  "name": "DiagnosticoCl",
+  "title": "CL Condición-Diagnóstico",
+  "status": "active",
+  "description": "Condicion o Diagnósticos de Pacientes para Registro Clínico Electrónico",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "sct-concept",
+      "uri": "http://snomed.info/conceptdomain",
+      "name": "SNOMED CT Concept Domain Binding"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "sct-attr",
+      "uri": "http://snomed.org/attributebinding",
+      "name": "SNOMED CT Attribute Binding"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition.clinicalStatus",
+        "path": "Condition.clinicalStatus",
+        "short": "El estatus en el cual se encuentra la condición: active| recurrece | relapse | inactive | remission | resolved",
+        "definition": "El estatus en el cual se encuentra la condición de un Paciente",
+        "min": 1,
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/condition-clinical",
+          "description": "Códigos requeridos por HL7-FHIR"
+        }
+      },
+      {
+        "id": "Condition.verificationStatus",
+        "path": "Condition.verificationStatus",
+        "short": "Estado de verificación de la condición o Diagnóstico",
+        "definition": "Estado de verificación de la condición o Diagnóstico",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/condition-ver-status",
+          "description": "unconfirmed | provisional | differential | confirmed | refuted | entered-in-error"
+        }
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "short": "Códigos de SOMED-CT y adicionales de ausente o desconocido",
+        "definition": "Códigos de toda la Terminología.",
+        "comment": "Se agregan los códigos no conocido o no presente",
+        "min": 1,
+        "mustSupport": true,
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSDiagnosticosSCT",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+              "valueString": "DiagnosticosSCT + Ausente o Desconocido"
+            }
+          ],
+          "description": "Diagósticos en SNOMED-CT. El ValueSet trae toda la terminología + Problema Ausente o Desconocido"
+        }
+      },
+      {
+        "id": "Condition.code.coding.system",
+        "path": "Condition.code.coding.system",
+        "short": "Dominio de los códigos declarados",
+        "definition": "Dominio de los códigos declarados",
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.code.coding.code",
+        "path": "Condition.code.coding.code",
+        "short": "Códoigo del diagnóstico o problema",
+        "definition": "Códoigo del diagnóstico o problema",
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.code.coding.display",
+        "path": "Condition.code.coding.display",
+        "short": "Glosa del código en la terminología.",
+        "definition": "Glosa del código en la terminología.",
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.code.text",
+        "path": "Condition.code.text",
+        "short": "Se debe al menos notificar el diagnóstico o Problema en Texto",
+        "definition": "Se debe al menos notificar el diagnóstico o Problema en Texto",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.subject",
+        "path": "Condition.subject",
+        "short": "Paciente sobre al que corresponde la condición.",
+        "definition": "Paciente sobre al que corresponde la condición.",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.subject.reference",
+        "path": "Condition.subject.reference",
+        "short": "Referencia al recurso del Paciente al cual se indica el diagnóstico o condicón",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.subject.identifier",
+        "path": "Condition.subject.identifier",
+        "short": "Identificador del paciente",
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.subject.display",
+        "path": "Condition.subject.display",
+        "short": "Texto alternativo para el recurso",
+        "mustSupport": true
+      },
+      {
+        "id": "Condition.onset[x]",
+        "path": "Condition.onset[x]",
+        "short": "Fecha para determinación Diagnóstica a definir entre fecha única o período",
+        "definition": "Fecha o rango de fechas en que se definió el diagnóstico o se determinó la condición",
+        "type": [
+          {
+            "code": "dateTime",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support",
+                "valueBoolean": true
+              }
+            ]
+          },
+          {
+            "code": "Period",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support",
+                "valueBoolean": true
+              }
+            ]
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

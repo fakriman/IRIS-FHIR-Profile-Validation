@@ -1,0 +1,480 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EncounterCL",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Base.Management"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/EncounterCL",
+  "version": "0.1.0",
+  "name": "EncounterCL",
+  "title": "CL Encuentro",
+  "status": "active",
+  "description": "Definición de un Encuentro clínico remoto para las necesidades de interoperabilidad en Chile.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Encounter",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Encounter",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Encounter.extension",
+        "path": "Encounter.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Encounter.extension:notas",
+        "path": "Encounter.extension",
+        "sliceName": "notas",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/NotasEncuentro"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.identifier",
+        "path": "Encounter.identifier",
+        "short": "Identificador(es) por los que se conoce este encuentro",
+        "definition": "Es el número de identificación del encuentro realizado",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.status",
+        "path": "Encounter.status",
+        "short": "planned | arrived | triaged | in-progress | onleave | finished | cancelled",
+        "definition": "Determina el estado del encuentro remoto conforme a los códigos definidos por el estándar",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.class",
+        "path": "Encounter.class",
+        "short": "Clasificación del encuentro con el paciente",
+        "definition": "Clasificación del encuentro con el paciente en este caso encuentro remoto",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://terminology.hl7.org/ValueSet/v3-ActCode"
+        }
+      },
+      {
+        "id": "Encounter.class.code",
+        "path": "Encounter.class.code",
+        "short": "Se obliga a usar VR que proviene de 'Virtual'",
+        "patternCode": "VR"
+      },
+      {
+        "id": "Encounter.type",
+        "path": "Encounter.type",
+        "short": "Tipo específico de Encuentro",
+        "definition": "Específica el tipo de encuentro que se ha generado de forma remota",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.type.extension",
+        "path": "Encounter.type.extension",
+        "short": "Tipos de encuentro remoto",
+        "definition": "Se usa esta extensión para agregar el tipo de Encuentro que se genera de manera remota",
+        "min": 1
+      },
+      {
+        "id": "Encounter.type.extension:type",
+        "path": "Encounter.type.extension",
+        "sliceName": "type",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposEncuentro"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.serviceType",
+        "path": "Encounter.serviceType",
+        "short": "Tipo de servicio que se realiza en el Encuentro",
+        "definition": "Categorización del servicio que se va a prestar en el encuentro (por ejemplo, servicio de Ginecología)",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.serviceType.extension",
+        "path": "Encounter.serviceType.extension",
+        "short": "Tipo de servicio que se realiza en el encuentro remoto",
+        "min": 1
+      },
+      {
+        "id": "Encounter.serviceType.extension:serviceType",
+        "path": "Encounter.serviceType.extension",
+        "sliceName": "serviceType",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposServicio"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.subject",
+        "path": "Encounter.subject",
+        "short": "Referencia al paciente del encuentro",
+        "definition": "La referencia al paciente que está presente en el encuentro clínico remoto",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.participant",
+        "path": "Encounter.participant",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "type.coding.code"
+            }
+          ],
+          "rules": "open",
+          "description": "Este slice se genera para diferenciar participantes secundarios vs el participante principal"
+        },
+        "short": "Participantes involucrados en el encuentro sin considerar al paciente",
+        "min": 1
+      },
+      {
+        "id": "Encounter.participant:partPrincipal",
+        "path": "Encounter.participant",
+        "sliceName": "partPrincipal",
+        "short": "Determinación del(os) participante(s) principal(es) del encuentro sin contar el paciente, en este caso el facultativo o médico principal",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.participant:partPrincipal.extension",
+        "path": "Encounter.participant.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Encounter.participant:partPrincipal.extension:especialidad",
+        "path": "Encounter.participant.extension",
+        "sliceName": "especialidad",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/VSEspecialidadesDeisCL"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.participant:partPrincipal.type",
+        "path": "Encounter.participant.type",
+        "short": "Rol del participante en el encuentro",
+        "definition": "Este slice corresponde al médico encargado de este encuentro, por lo tanto, se fuerza la codificación a intérprete principal",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/encounter-participant-type"
+        }
+      },
+      {
+        "id": "Encounter.participant:partPrincipal.type.coding.code",
+        "path": "Encounter.participant.type.coding.code",
+        "min": 1,
+        "patternCode": "PPRF"
+      },
+      {
+        "id": "Encounter.participant:partPrincipal.individual",
+        "path": "Encounter.participant.individual",
+        "short": "Médico principal involucrado en el encuentro",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePrestadorCl"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.participant:partSecundario",
+        "path": "Encounter.participant",
+        "sliceName": "partSecundario",
+        "short": "Determinación del(os) participante(s) secundario(s) del encuentro",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.participant:partSecundario.extension",
+        "path": "Encounter.participant.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Contacto de los participantes secundarios",
+        "definition": "Contacto de los participantes involucrados en el encuentro, que no sea paciente ni el médico principal",
+        "min": 1
+      },
+      {
+        "id": "Encounter.participant:partSecundario.extension:contact",
+        "path": "Encounter.participant.extension",
+        "sliceName": "contact",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ContactoParticipantes"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.participant:partSecundario.type",
+        "path": "Encounter.participant.type",
+        "short": "Rol del participante en el encuentro",
+        "definition": "Este slice corresponde a los actores secundarios que participan en el encuentro, por lo tanto se fuerza la codificación a intérprete secundario",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/encounter-participant-type"
+        }
+      },
+      {
+        "id": "Encounter.participant:partSecundario.type.coding.code",
+        "path": "Encounter.participant.type.coding.code",
+        "min": 1,
+        "patternCode": "SPRF"
+      },
+      {
+        "id": "Encounter.appointment",
+        "path": "Encounter.appointment",
+        "short": "Reserva de un evento de atención médica entre paciente(s), profesional(es), persona(s) relacionada(s) y/o dispositivo(s)",
+        "definition": "Cita o agendamiento médico, la cual es resultado de un encuentro",
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.appointment.display",
+        "path": "Encounter.appointment.display",
+        "short": "Descripción de la reserva o cita médica",
+        "definition": "Descripción del agendamiento que se realiza en el encuentro remoto, ej: próximo control 3 meses",
+        "min": 1
+      },
+      {
+        "id": "Encounter.period",
+        "path": "Encounter.period",
+        "short": "La hora de inicio y finalización del encuentro",
+        "definition": "La hora de inicio y finalización del encuentro",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.period.start",
+        "path": "Encounter.period.start",
+        "short": "Hora de inicio",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.period.end",
+        "path": "Encounter.period.end",
+        "short": "Hora de finalización",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.length",
+        "path": "Encounter.length",
+        "short": "Cantidad de tiempo que duró el encuentro (menos tiempo ausente)",
+        "definition": "Cantidad de tiempo que duró el encuentro (menos tiempo ausente)",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.reasonCode",
+        "path": "Encounter.reasonCode",
+        "short": "Razón codificada por la que tiene lugar el Encuentro",
+        "definition": "Razón codificada por la que tiene lugar el Encuentro",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.reasonCode.extension",
+        "path": "Encounter.reasonCode.extension",
+        "short": "Razones por las cuales NO se realiza el encuentro remoto",
+        "definition": "Se usa esta extensión para agregar las razones por las cuales no se pudo llevar a cabo el encuentro remoto"
+      },
+      {
+        "id": "Encounter.reasonCode.extension:reasonCode",
+        "path": "Encounter.reasonCode.extension",
+        "sliceName": "reasonCode",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RazonNOrealizarse"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.reasonCode.text",
+        "path": "Encounter.reasonCode.text",
+        "short": "Razón por la que tiene lugar el Encuentro",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.diagnosis",
+        "path": "Encounter.diagnosis",
+        "short": "Diagnóstico relevante para este encuentro",
+        "definition": "Diagnóstico relevante para este encuentro",
+        "mustSupport": true
+      },
+      {
+        "id": "Encounter.diagnosis.extension",
+        "path": "Encounter.diagnosis.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Encounter.diagnosis.extension:observaciones",
+        "path": "Encounter.diagnosis.extension",
+        "sliceName": "observaciones",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ObservacionesDiagnostico"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.diagnosis.condition",
+        "path": "Encounter.diagnosis.condition",
+        "short": "El diagnóstico o procedimiento relevante para el encuentro",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Encounter.serviceProvider",
+        "path": "Encounter.serviceProvider",
+        "short": "La organización (instalación) responsable de este encuentro",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreOrganizacionCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

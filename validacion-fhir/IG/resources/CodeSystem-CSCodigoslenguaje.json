@@ -1,0 +1,302 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSCodigoslenguaje",
+  "id": "CSCodigoslenguaje",
+  "title": "Codigos Lenguaje",
+  "description": "Codigoslenguaje",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoslenguaje",
+  "concept": [
+    {
+      "code": "ar-SA",
+      "display": "Arabic",
+      "definition": "Saudi Arabia, Arabic (Saudi Arabia)"
+    },
+    {
+      "code": "bn-BD",
+      "display": "Bangla",
+      "definition": "Bangladesh, Bangla (Bangladesh)"
+    },
+    {
+      "code": "bn-IN",
+      "display": "Bangla",
+      "definition": "India, Bangla (India)"
+    },
+    {
+      "code": "cs-CZ",
+      "display": "Czech",
+      "definition": "Czech Republic, Czech (Czech Republic)"
+    },
+    {
+      "code": "da-DK",
+      "display": "Danish",
+      "definition": "Denmark, Danish (Denmark)"
+    },
+    {
+      "code": "de-AT",
+      "display": "German",
+      "definition": "Austria, Austrian German"
+    },
+    {
+      "code": "de-CH",
+      "display": "German",
+      "definition": "Switzerland, Swiss German"
+    },
+    {
+      "code": "de-DE",
+      "display": "German",
+      "definition": "Germany, Standard German (as spoken in Germany)"
+    },
+    {
+      "code": "el-GR",
+      "display": "Greek",
+      "definition": "Greece, Modern Greek"
+    },
+    {
+      "code": "en-AU",
+      "display": "English",
+      "definition": "Australia, Australian English"
+    },
+    {
+      "code": "en-CA",
+      "display": "English",
+      "definition": "Canada, Canadian English"
+    },
+    {
+      "code": "en-GB",
+      "display": "English",
+      "definition": "United Kingdom, British English"
+    },
+    {
+      "code": "en-IE",
+      "display": "English",
+      "definition": "Ireland, Irish English"
+    },
+    {
+      "code": "en-IN",
+      "display": "English",
+      "definition": "India, Indian English"
+    },
+    {
+      "code": "en-NZ",
+      "display": "English",
+      "definition": "New Zealand, New Zealand English"
+    },
+    {
+      "code": "en-US",
+      "display": "English",
+      "definition": "United States, US English"
+    },
+    {
+      "code": "en-ZA",
+      "display": "English",
+      "definition": "South Africa, English (South Africa)"
+    },
+    {
+      "code": "es-AR",
+      "display": "Spanish",
+      "definition": "Argentina, Argentine Spanish"
+    },
+    {
+      "code": "es-CL",
+      "display": "Spanish",
+      "definition": "Chile, Chilean Spanish"
+    },
+    {
+      "code": "es-CO",
+      "display": "Spanish",
+      "definition": "Columbia, Colombian Spanish"
+    },
+    {
+      "code": "es-ES",
+      "display": "Spanish",
+      "definition": "Spain, Castilian Spanish (as spoken in Central-Northern Spain)"
+    },
+    {
+      "code": "es-MX",
+      "display": "Spanish",
+      "definition": "Mexico, Mexican Spanish"
+    },
+    {
+      "code": "es-US",
+      "display": "Spanish",
+      "definition": "United States, American Spanish"
+    },
+    {
+      "code": "fi-FI",
+      "display": "Finnish",
+      "definition": "Finland, Finnish (Finland)"
+    },
+    {
+      "code": "fr-BE",
+      "display": "French",
+      "definition": "Belgium, Belgian French"
+    },
+    {
+      "code": "fr-CA",
+      "display": "French",
+      "definition": "Canada, Canadian French"
+    },
+    {
+      "code": "fr-CH",
+      "display": "French",
+      "definition": "Switzerland, Swiss French"
+    },
+    {
+      "code": "fr-FR",
+      "display": "French",
+      "definition": "France, Standard French (especially in France)"
+    },
+    {
+      "code": "he-IL",
+      "display": "Hebrew",
+      "definition": "Israel, Hebrew (Israel)"
+    },
+    {
+      "code": "hi-IN",
+      "display": "Hindi",
+      "definition": "India, Hindi (India)"
+    },
+    {
+      "code": "hu-HU",
+      "display": "Hungarian",
+      "definition": "Hungary, Hungarian (Hungary)"
+    },
+    {
+      "code": "id-ID",
+      "display": "Indonesian",
+      "definition": "Indonesia, Indonesian (Indonesia)"
+    },
+    {
+      "code": "it-CH",
+      "display": "Italian",
+      "definition": "Switzerland, Swiss Italian"
+    },
+    {
+      "code": "it-IT",
+      "display": "Italian",
+      "definition": "Italy, Standard Italian (as spoken in Italy)"
+    },
+    {
+      "code": "jp-JP",
+      "display": "Japanese",
+      "definition": "Japan, Japanese (Japan)"
+    },
+    {
+      "code": "ko-KR",
+      "display": "Korean",
+      "definition": "Republic of Korea, Korean (Republic of Korea)"
+    },
+    {
+      "code": "nl-BE",
+      "display": "Dutch",
+      "definition": "Belgium, Belgian Dutch"
+    },
+    {
+      "code": "nl-NL",
+      "display": "Dutch",
+      "definition": "The Netherlands, Standard Dutch (as spoken in The Netherlands)"
+    },
+    {
+      "code": "no-NO",
+      "display": "Norwegian",
+      "definition": "Norway, Norwegian (Norway)"
+    },
+    {
+      "code": "pl-PL",
+      "display": "Polish",
+      "definition": "Poland, Polish (Poland)"
+    },
+    {
+      "code": "pt-BR",
+      "display": "Portugese",
+      "definition": "Brazil, Brazilian Portuguese"
+    },
+    {
+      "code": "pt-PT",
+      "display": "Portugese",
+      "definition": "Portugal, European Portuguese (as written and spoken in Portugal)"
+    },
+    {
+      "code": "ro-RO",
+      "display": "Romanian",
+      "definition": "Romania, Romanian (Romania)"
+    },
+    {
+      "code": "ru-RU",
+      "display": "Russian",
+      "definition": "Russian Federation, Russian (Russian Federation)"
+    },
+    {
+      "code": "sk-SK",
+      "display": "Slovak",
+      "definition": "Slovakia, Slovak (Slovakia)"
+    },
+    {
+      "code": "sv-SE",
+      "display": "Swedish",
+      "definition": "Sweden, Swedish (Sweden)"
+    },
+    {
+      "code": "ta-IN",
+      "display": "Tamil",
+      "definition": "India, Indian Tamil"
+    },
+    {
+      "code": "ta-LK",
+      "display": "Tamil",
+      "definition": "Sri Lanka, Sri Lankan Tamil"
+    },
+    {
+      "code": "th-TH",
+      "display": "Thai",
+      "definition": "Thailand, Thai (Thailand)"
+    },
+    {
+      "code": "tr-TR",
+      "display": "Turkish",
+      "definition": "Turkey, Turkish (Turkey)"
+    },
+    {
+      "code": "zh-CN",
+      "display": "Chinese",
+      "definition": "China, Mainland China, simplified characters"
+    },
+    {
+      "code": "zh-HK",
+      "display": "Chinese",
+      "definition": "Hond Kong, Hong Kong, traditional characters"
+    },
+    {
+      "code": "zh-TW",
+      "display": "Chinese",
+      "definition": "Taiwan, Taiwan, traditional characters"
+    }
+  ],
+  "date": "2022-06-10T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 53
+}

@@ -1,0 +1,247 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoreOrganizacionCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Base.Entities"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "business"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreOrganizacionCl",
+  "version": "0.1.0",
+  "name": "OrganizacionCL",
+  "title": "CL Organización",
+  "status": "active",
+  "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica. Sin embargo, se ha modelado para también cubrir las necesidades nacionales de un Recurso de Organzación en Salud",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "servd",
+      "uri": "http://www.omg.org/spec/ServD/1.0/",
+      "name": "ServD"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Organization",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Organization",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Organization.identifier",
+        "path": "Organization.identifier",
+        "short": "Identificador de organizacion de salud (DEIS, RUT, Códigos para cietos tipos de Recintos, etc.)",
+        "definition": "Identificador universal de la organización en Chile",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.identifier.system",
+        "path": "Organization.identifier.system",
+        "short": "indicador del sistema de indentificación usado pora determinar el valor del identificador",
+        "definition": "Se debe aun definir un ValueSet para estos casos",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.identifier.value",
+        "path": "Organization.identifier.value",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.active",
+        "path": "Organization.active",
+        "short": "Estado de si es una Organización Validada o no (true|false)",
+        "definition": "Indicador si una organización sigue vigente en su rol dentro del sistema de salud"
+      },
+      {
+        "id": "Organization.name",
+        "path": "Organization.name",
+        "short": "Nombre Legal de la Organizacion",
+        "definition": "Nombre Legal de la Organización",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.alias",
+        "path": "Organization.alias",
+        "short": "Nombre de Fantasía",
+        "definition": "Nombre por lo que  popularmente es conocida la Organización y que no corresponde al nombre legal",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.telecom",
+        "path": "Organization.telecom",
+        "short": "Contactos de la organización",
+        "definition": "Contactos de la organización",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.telecom.system",
+        "path": "Organization.telecom.system",
+        "definition": "Forma de telecomunicación para el punto de contacto: qué sistema de comunicación se requiere para hacer uso del contacto.",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system",
+          "description": "VS HL7 FHIR tipos diferentes de medios de contacto"
+        }
+      },
+      {
+        "id": "Organization.telecom.value",
+        "path": "Organization.telecom.value",
+        "short": "Dato del contato de la ubicación descrita",
+        "definition": "Valor del contacto como por ejemplo el numero de telefono fijo o de móvil o el email de Organiación"
+      },
+      {
+        "id": "Organization.telecom.use",
+        "path": "Organization.telecom.use",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use"
+        }
+      },
+      {
+        "id": "Organization.address",
+        "path": "Organization.address",
+        "short": "Dirección de la Localiación",
+        "definition": "Se definirá la dirección en una línea y se podría codificar en city la comuna, en district la provincia y en state la región",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.address.use",
+        "path": "Organization.address.use",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.address.line",
+        "path": "Organization.address.line",
+        "short": "Calle o avenida, numero y casa o depto",
+        "definition": "Aquí se escribe toda la dirección completa",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.address.city",
+        "path": "Organization.address.city",
+        "short": "Campo para Comuna de residencia",
+        "definition": "Campo para Comuna de residencia. Se usa el valueSet de códigos de comunas definidos a nivel naciona.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosComunaCL",
+          "description": "Códigos Comuna, Ministerio del Interior, 2018"
+        }
+      },
+      {
+        "id": "Organization.address.district",
+        "path": "Organization.address.district",
+        "short": "Campo para Provincia de Residencia",
+        "definition": "Campo para Provincia de Residencia. Se usa el valueSet de códigos de provicias definidos a nivel naciona.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosProvinciasCL",
+          "description": "Códigos Provincia, Ministerio del Interior, 2018"
+        }
+      },
+      {
+        "id": "Organization.address.state",
+        "path": "Organization.address.state",
+        "short": "Campo para la Región",
+        "definition": "Campo Región. Se usa el valueSet de códigos de regiones definidos a nivel naciona.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosRegionesCL",
+          "description": "Códigos Regiones, Ministerio del Interior, 2018"
+        }
+      },
+      {
+        "id": "Organization.address.country",
+        "path": "Organization.address.country",
+        "short": "Campo para País de Residencia",
+        "definition": "Campo para País de Residencia",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/CodPais"
+        }
+      },
+      {
+        "id": "Organization.contact",
+        "path": "Organization.contact",
+        "short": "Contacto de la Organización para ciertos propósitos",
+        "definition": "Contacto de la Organización para ciertos propósitos",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.contact.purpose",
+        "path": "Organization.contact.purpose",
+        "short": "El tipo de contacto",
+        "definition": "El propósito mediante el cual el contacto puede ser alcanzado",
+        "mustSupport": true,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contactentity-type",
+          "description": "Códigos del propósito del contacto, HL7 FHIR"
+        }
+      },
+      {
+        "id": "Organization.contact.name",
+        "path": "Organization.contact.name",
+        "short": "Nombre asociado al contacto",
+        "definition": "Nombre asociado al contacto",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.contact.telecom",
+        "path": "Organization.contact.telecom",
+        "short": "Detalles de contacto de la Organización",
+        "definition": "Detalles del contacto de la Organización comunmente el o los mas usados (Ej: Teléfono fijo, móvil, email, etc.)",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.contact.telecom.system",
+        "path": "Organization.contact.telecom.system",
+        "definition": "Forma de telecomunicación para el punto de contacto: qué sistema de comunicación se requiere para hacer uso del contacto.",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system"
+        }
+      },
+      {
+        "id": "Organization.contact.telecom.value",
+        "path": "Organization.contact.telecom.value",
+        "short": "Dato del contato del paciente descrito",
+        "definition": "Valor del contacto como por ejemplo el numero de telefono fijo o de móvil o el email del Paciente"
+      },
+      {
+        "id": "Organization.contact.telecom.use",
+        "path": "Organization.contact.telecom.use",
+        "short": "home | work | temp | old | mobile",
+        "definition": "Propósito para el contacto que se ha definido",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use"
+        }
+      }
+    ]
+  }
+}

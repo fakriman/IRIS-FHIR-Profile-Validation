@@ -1,0 +1,762 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "webinar-isc-ig",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/ImplementationGuide/webinar-isc-ig",
+  "version": "0.1.0",
+  "name": "WebinarISCIG",
+  "status": "draft",
+  "publisher": "InterSystems",
+  "contact": [
+    {
+      "name": "InterSystems",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.intersystems.com"
+        }
+      ]
+    }
+  ],
+  "packageId": "webinar-isc-ig",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "StructureDefinition/AuditEventCl"
+        },
+        "name": "CL Auditoria",
+        "description": "Perfil para genererar un recurso que permita desarrollar logs de auditoría en cuanto al acceso y manejo de recursos FHIR",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/BundleCl"
+        },
+        "name": "Cl BundleCL",
+        "description": "Este Perfil describe como debe ser el recurso Bundle que permite transportar una serie de recursos de PRescripción para  conformar una receta",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/cl-address"
+        },
+        "name": "CL Address",
+        "description": "Variable dirección",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CoreEspecialidadCl"
+        },
+        "name": "CL RolClinico",
+        "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica. Sin embargo, se ha modelado con el fin de cubrir las necesidades nacionales de un Recurso de Especialidad Médica para la denominación de Prescriptor en Chile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CoreDiagnosticoCl"
+        },
+        "name": "CL Condición-Diagnóstico",
+        "description": "Condicion o Diagnósticos de Pacientes para Registro Clínico Electrónico",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/DocumentoCl"
+        },
+        "name": "CL Documento",
+        "description": "Definición de un documento para Resumen de Historia o Registro de Encuentro para Historia Clínica, basado en IPS.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/EncounterCL"
+        },
+        "name": "CL Encuentro",
+        "description": "Definición de un Encuentro clínico remoto para las necesidades de interoperabilidad en Chile.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ImmunizationCL"
+        },
+        "name": "CL Inmunización",
+        "description": "Definición de un evento de inmunización para las necesidades de interoperabilidad en Chile.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CoreLocalizacionCl"
+        },
+        "name": "CL Localización",
+        "description": "Este perfil determina la ubicación especifica para un evento, objeto o Infraestructura específica. Este perfil permite vinlcular la localización especifica con una organización o espacio físico específico",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CoreMedicamentoCl"
+        },
+        "name": "CL Medicamento",
+        "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica desde la visión del TFC que se usará para poder manejar farmacos ya registrados, y que deberán ser consultados por los prestadores a la hora de prescribir algno.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CoreOrganizacionCl"
+        },
+        "name": "CL Organización",
+        "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica. Sin embargo, se ha modelado para también cubrir las necesidades nacionales de un Recurso de Organzación en Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CorePacienteCl"
+        },
+        "name": "CL Paciente",
+        "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica. Sin embargo, se ha modelado con el fin de cubrir las necesidades nacionales de un Recurso Paciente para un Historial Clínico Nacional",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CorePrestadorCl"
+        },
+        "name": "CL Prestador",
+        "description": "Este Perfil fue creado para cubrir la descripción de un Prestador a nivel Nacional",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ProvenanceCl"
+        },
+        "name": "CL Provenance",
+        "description": "Este Perfil describe la forma de validación respecto a la procedencia de un recurso genrado durante un acto clínico.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ComunasCl"
+        },
+        "name": "Códigos para Comunas en Chile",
+        "description": "Esta extensión que permite codiificar las Comunas en Chile en el campo de Dirección",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ContactoParticipantes"
+        },
+        "name": "Contacto de los participantes secundarios del encuentro",
+        "description": "Esta extensión incluye los códigos de los medios de contacto que se tiene para los participantes secundarios",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/VSEspecialidadesDeisCL"
+        },
+        "name": "Especialidad del médico principal",
+        "description": "Esta extensión incluye los códigos de las especialidades que puede tener el medico principal",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/IdContacto"
+        },
+        "name": "Identificación del Contacto de un Paciente",
+        "description": "Identificación de contacto de paciente en especial para casos en los cuales este actúa como Tutor Legal",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/NombreCampana"
+        },
+        "name": "Nombre de la Campaña de vacunación establecida por el RNI (Registro Nacional de Inmunizaciones)",
+        "description": "Esta extensión incluye los nombres de las distintas Campañas que se realizan y estan registradas en el RNI",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/NotasEncuentro"
+        },
+        "name": "Notas realizadas en un encuentro por Comité",
+        "description": "Esta extensión incluye los códigos de los medios de contacto que se tiene para los participantes secundarios",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ObservacionesDiagnostico"
+        },
+        "name": "Observaciones o comentarios simples respecto a un diagnóstico",
+        "description": "Esta extensión sirve para insertar comentarios acerca a un diagnóstico médico realizado en un encuentro remoto",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/CodigoPaises"
+        },
+        "name": "Codigo de Identificación de países",
+        "description": "Esta extensión incluye códigos de paises de origen",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ProvinciasCl"
+        },
+        "name": "Códigos para Provincias en Chile",
+        "description": "Esta extensión que permite codificar las Provincias en Chile en el campo de Dirección",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/RazonNOrealizarse"
+        },
+        "name": "Código de las razones por la cual no se pudo realizar la atención",
+        "description": "Esta extensión incluye códigos de razones por la cuales no pudo llevarse a cabo el encuentro remoto",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/RazonNOrealizarseInm"
+        },
+        "name": "Razones por las cuales no se pudo realizar la inmunización",
+        "description": "Esta extensión incluye las razones por la cuales no pudo llevarse a cabo la inmunización",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/RegionesCl"
+        },
+        "name": "Códigos para Regiones en Chile",
+        "description": "Esta extensión que permite codificar las Regiones en Chile en el campo de Dirección",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ServicioSalud"
+        },
+        "name": "Sistema Nacional de Servicios de Salud",
+        "description": "Esta extensión incluye los códigos de los Servicios de Salud que existen en el país",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/TiposEncuentro"
+        },
+        "name": "Código de tipos de encuentro remoto",
+        "description": "Esta extensión incluye códigos de los tipos de encuentro que se realizan de forma remota",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/TiposVacunaRNI"
+        },
+        "name": "Código de tipos de Vacunas en Chile",
+        "description": "Esta extensión incluye códigos de los tipos de vacunas que existe en el Registro Nacional de Inmunizaciones RNI",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/TiposServicio"
+        },
+        "name": "Código de los tipos de servicio que se atiende",
+        "description": "Esta extensión incluye códigos de servicios que se entregan de forma remota",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/CodPais"
+        },
+        "name": "Códigos de Países",
+        "description": "Codigos definidos para la identificación de países segun norma ISO3166-N",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSCodigosComunaCL"
+        },
+        "name": "Códigos de Comunas en Chile",
+        "description": "Códigos de Comunas para Chile según Códigos Únicos Territoriales Actualizados, por Decreto exento No 817 del Ministerio del Interior",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSCodigosProvinciasCL"
+        },
+        "name": "Códigos de Provincias en Chile",
+        "description": "Códigos de Provincias para Chile según Códigos Únicos Territoriales Actualizados, por Decreto exento No 817 del Ministerio del Interior",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSCodigosRegionesCL"
+        },
+        "name": "Códigos de Regiones en Chile",
+        "description": "Códigos de Regiones para Chile según Códigos Únicos Territoriales Actualizados, por Decreto exento No 817 del Ministerio del Interior",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSCodigosServiciosSalud"
+        },
+        "name": "Servicos de Salud en Chile",
+        "description": "Códigos de Servicios de Salud que existen en Chile",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSCodigoslenguaje"
+        },
+        "name": "Codigos Lenguaje",
+        "description": "Códigos de leguaje",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSContactosec"
+        },
+        "name": "Contacto participantes",
+        "description": "Contacto telefónico o correo de los participantes",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSDiagnosticosSCT"
+        },
+        "name": "Diagnósticos SNOMED y Ausente o Desconocido",
+        "description": "Diagnósticos definidos en Snomed-CT.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSEspecialidadesDeisCL"
+        },
+        "name": "Códigos de Especialidades",
+        "description": "Códigos de especialidades médicas descritas según DEIS",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSNombreCampana"
+        },
+        "name": "Campañas de Vacunación",
+        "description": "Campañas de Inmunización utilizada en Chile según CodeSystem local",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSRazonNOTinm"
+        },
+        "name": "Razones no Inmunización",
+        "description": "Razones por la que no se lleva a cabo la administración de una vacuna o registro de una inmunización según CodeSystem local",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSRazonNOT"
+        },
+        "name": "Razones no Atención Remota",
+        "description": "Razones por la que no se lleva a cabo un encuentro remoto según CodeSystem local",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSTiposDocClinic"
+        },
+        "name": "Tipos de Documentos Clínicos",
+        "description": "Tipos de Documentos clínicos para Composition. Se trae todo Loinc, se requerirá un VS específico",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSTiposDocumentos"
+        },
+        "name": "Tipos de Documentos",
+        "description": "Tipos de Documentos para identificación según tabla HL7 V3 y CodeSystem local.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSTiposEncuentroCL"
+        },
+        "name": "Tipos de Encuentro",
+        "description": "Códigos de Encuentros según MINSAL",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSTiposServicio"
+        },
+        "name": "Tipos de Servicios Remotos",
+        "description": "Tipos de Servicios para encuentro remoto según CodeSystem local",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/VSTiposVacunas"
+        },
+        "name": "Tipos de Vacunas RNI",
+        "description": "Tipos de Vacunas utilizadas en Chile según CodeSystem local",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodComunasCL"
+        },
+        "name": "Códigos de Comunas en Chile",
+        "description": "Códigos de Comunas para Chile según Códigos Únicos Territoriales Actualizados, por Decreto exento No 817 del Ministerio del Interior",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodProvinciasCL"
+        },
+        "name": "Códigos de Provincias en Chile",
+        "description": "Códigos de Provincias para Chile según Códigos Únicos Territoriales Actualizados, por Decreto exento No 817 del Ministerio del Interior",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodRegionCL"
+        },
+        "name": "Códigos de Regiones en Chile",
+        "description": "Códigos de Regiones para Chile según Códigos Únicos Territoriales Actualizados, por Decreto exento No 817 del Ministerio del Interior",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodSSalud"
+        },
+        "name": "Servicios de Salud Chile",
+        "description": "Códigos del Sistema Nacional de Servicios de Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodigoServicio"
+        },
+        "name": "Tipos de Servicios Remotos",
+        "description": "Códigos para los Servicios realizados en un encuentro remoto según indicaciones del Ministerio de Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodigoDNI"
+        },
+        "name": "Códigos de Documentos DNI para LATAM y el Caribe",
+        "description": "Códigos para los DNI de países de America Latina y el Caribe según indicaciones de VS HL7 de V3",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodigoslenguaje"
+        },
+        "name": "Codigos Lenguaje",
+        "description": "Codigoslenguaje",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSEspecialidadesDeisCL"
+        },
+        "name": "Códigos de Especialidades",
+        "description": "Códigos de especialidades médicas descritas según DEIS",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSNombreCampana"
+        },
+        "name": "Campañas Inmunización",
+        "description": "Códigos de las campañas de vacunas o inmunizaciones según indicaciones del Ministerio de Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSRazonNOT"
+        },
+        "name": "Razones Cancelación Atención Remota",
+        "description": "Códigos de las razones por la cual un encuentro remoto no pudo realizarse según indicaciones del Ministerio de Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSRazonNOTinm"
+        },
+        "name": "Razones no Inmunización",
+        "description": "Códigos de las razones por la cual el registro de inmunización no pudo realizarse según indicaciones del Ministerio de Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSTiposEncuentroCL"
+        },
+        "name": "Tipos de Encuentro",
+        "description": "Códigos de Encuentros según MINSAL",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/CSCodigoVacunas"
+        },
+        "name": "Códigos de Vacunas RNI",
+        "description": "Códigos de las vacunas o inmunizaciones según indicaciones del Ministerio de Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/csrazonnoencuentro"
+        },
+        "name": "Razón Encuentro Remoto no Realizado",
+        "description": "Códigos de las razones por la cual un encuentro remoto no pudo realizarse según indicaciones del Ministerio de Salud",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Patient/11"
+        },
+        "name": "Ejemplo de Recurso Paciente",
+        "description": "Paciente ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Condition/1112"
+        },
+        "name": "Ejemplo de Recurso Condition",
+        "description": "Condition ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/123"
+        },
+        "name": "Ejemplo de Recurso Observation",
+        "description": "Observation ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "AllergyIntolerance/222"
+        },
+        "name": "Ejemplo de Recurso AllergyIntolerance",
+        "description": "AllergyIntolerance ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/3020"
+        },
+        "name": "Ejemplo de Recurso Profesional",
+        "description": "Profesional ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/3240"
+        },
+        "name": "Ejemplo de Recurso Prestador como base para un Core Nacional",
+        "description": "Ejemplo de un Prestador no Real con identificadores en Systemas con API\"s no disponibles",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePrestadorCl"
+      },
+      {
+        "reference": {
+          "reference": "Location/3333458"
+        },
+        "name": "Ejemplo de Recurso Location",
+        "description": "Location ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "MedicationStatement/354"
+        },
+        "name": "Ejemplo de Recurso MedicationStatement",
+        "description": "MedicationStatement ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Immunization/999"
+        },
+        "name": "Ejemplo de Recurso Immunization",
+        "description": "Immunization ficticio",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "AuditEvent/AuditEventEx"
+        },
+        "name": "Ejemplo de un Audit-Event Search.",
+        "description": "Log de Audición de una operacion Search.",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/AuditEventCl"
+      },
+      {
+        "reference": {
+          "reference": "Bundle/BundleEx"
+        },
+        "name": "Ejemplo Simple de Bundle de Transacción",
+        "description": "Bundle de Transacción con un recurso Practitioner y un Recurso Organization",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/BundleCl"
+      },
+      {
+        "reference": {
+          "reference": "Composition/CompositionCl-CarlosSalas"
+        },
+        "name": "Ejemplo de Recurso CompositionCl",
+        "description": "Composición de un documento para resumen de historia clínica",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/DocumentoCl"
+      },
+      {
+        "reference": {
+          "reference": "Condition/DiagnosticoEj"
+        },
+        "name": "Ejemplo de Un Diagnóstico de hipertensión",
+        "description": "Diagnóstico Confirmado de Hipertesión",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreDiagnosticoCl"
+      },
+      {
+        "reference": {
+          "reference": "Provenance/EjemplValidacionProvCl"
+        },
+        "name": "Ejemplo de la Validación de una Receta por medio del Prescriptor",
+        "description": "Ejemplo de una Receta en Request Group que contiene una receta, en la cual el prestador que la ha desarollado genera una validación por medio de una firma",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ProvenanceCl"
+      },
+      {
+        "reference": {
+          "reference": "Encounter/EncounterCL"
+        },
+        "name": "Ejemplo de Recurso Encuentro",
+        "description": "Encuentro remoto ficticio",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/EncounterCL"
+      },
+      {
+        "reference": {
+          "reference": "PractitionerRole/EspecialidadCL"
+        },
+        "name": "Ejemplo de Recurso de especialidad",
+        "description": "Define el Rol de un Médico durante la Operación de un paciente en Urgencia",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreEspecialidadCl"
+      },
+      {
+        "reference": {
+          "reference": "Immunization/ImmunizationCL"
+        },
+        "name": "Ejemplo de Recurso Inmunización",
+        "description": "Registro de inmunización ficticio",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ImmunizationCL"
+      },
+      {
+        "reference": {
+          "reference": "Location/LocalizacionEjemploCL1"
+        },
+        "name": "Ejemplo Localización Farmacia",
+        "description": "Ejemplo de la localización relacionada con una Farmacia específica ubicada en la comuna de Viña del Mar",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreLocalizacionCl"
+      },
+      {
+        "reference": {
+          "reference": "Medication/MedicamentoCl"
+        },
+        "name": "Ejemplo de comprimido Tareg - D 160",
+        "description": "Medicamento comprimido Tareg -D160 referemciado como medicamento en la TFC, considerando el de 25 comprimidos",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreMedicamentoCl"
+      },
+      {
+        "reference": {
+          "reference": "Medication/MedicamentoCl-2"
+        },
+        "name": "Hidroclorotiazida 25 mg + Valsartán 160 mg comprimido",
+        "description": "Definición de Hidroclorotiazida 25 mg + Valsartán 160 mg comprimido Código de descripción = 1703591000167111 y de Cocepto = 696681000167108 según TFC",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreMedicamentoCl"
+      },
+      {
+        "reference": {
+          "reference": "Organization/ORG1"
+        },
+        "name": "Ejemplo Organización Prestadora de Salud",
+        "description": "CESFAM Rio Bueno (Ficticio) con ID DEIS no real",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreOrganizacionCl"
+      },
+      {
+        "reference": {
+          "reference": "Patient/PacienteCL"
+        },
+        "name": "Ejemplo de Recurso Paciente Nacional",
+        "description": "Paciente ficticio nacional CI Chilena, sin sistema de validación \"http://regcivil.cl/Validacion/RUN\" ficticio , cuyo nombre se decribe mediante el oficial y uno social. La dirección tampoco es Real",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+      },
+      {
+        "reference": {
+          "reference": "Patient/PacienteCL2"
+        },
+        "name": "Ejemplo de Recurso Paciente Extranjero",
+        "description": "Paciente ficticio extrangero, con identificación Pasaporte de origen Salvadoreño sin sistema real de validación del número de Pasaporte.",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+      },
+      {
+        "reference": {
+          "reference": "Patient/PacienteCl-3"
+        },
+        "name": "Paciente Nacional, con datos actualizados, declarando nacionalidad",
+        "description": "Paciente ficticio nacional CI Chilena con sistema de validación no real, cuyo nombre es solo el oficial. La dirección tampoco es Real",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+      },
+      {
+        "reference": {
+          "reference": "Patient/PacienteCl-4"
+        },
+        "name": "Ejemplo de Recurso de paciente Nacional con contacto declarado",
+        "description": "Paciente ficticio nacional CI Chilena, \n     * sin sistema de validación \\\"http://regcivil.cl/Validacion/RUN\\\" ficticio , \n     * cuyo nombre se decribe mediante el oficial y uno social. \n     * La dirección tampoco es Real.\n     * Se agrega al paciente un acompañante patiente.",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+      },
+      {
+        "reference": {
+          "reference": "Patient/PacienteCl-5"
+        },
+        "name": "Ejemplo de Recurso de paciente Nacional con contacto declarado y extensión en dirección",
+        "description": "Paciente ficticio nacional CI Chilena, \n     * sin sistema de validación \\\"http://regcivil.cl/Validacion/RUN\\\" ficticio , \n     * cuyo nombre se decribe mediante el oficial y uno social. \n     * La dirección tampoco es Real.\n     * Se agrega al paciente un acompañante patiente\n     * La dirección se declara con códigos por extensión.",
+        "exampleCanonical": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+      },
+      {
+        "reference": {
+          "reference": "RequestGroup/RG12224"
+        },
+        "name": "example",
+        "description": "Solo un ejemplo",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Organization/f003"
+        },
+        "name": "Ejemplo de Recurso Organización",
+        "description": "Organización ficticio",
+        "exampleBoolean": true
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2023+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "ci-build"
+      }
+    ]
+  }
+}

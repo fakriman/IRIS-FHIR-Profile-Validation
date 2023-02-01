@@ -1,0 +1,49 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSTiposEncuentroCL",
+  "id": "CSTiposEncuentroCL",
+  "title": "Tipos de Encuentro",
+  "description": "Códigos de Encuentros según MINSAL",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSTiposEncuentroCL",
+  "concept": [
+    {
+      "code": "PR",
+      "display": "Programada"
+    },
+    {
+      "code": "SP",
+      "display": "Espontánea"
+    },
+    {
+      "code": "CO",
+      "display": "Comité"
+    }
+  ],
+  "date": "2022-05-21T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 3
+}

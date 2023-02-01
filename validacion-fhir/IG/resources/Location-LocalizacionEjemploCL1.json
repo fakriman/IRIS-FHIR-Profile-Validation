@@ -1,0 +1,63 @@
+{
+  "resourceType": "Location",
+  "id": "LocalizacionEjemploCL1",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreLocalizacionCl"
+    ]
+  },
+  "identifier": [
+    {
+      "value": "23144561",
+      "system": "http://miderfarm.cl/validador_id"
+    }
+  ],
+  "status": "active",
+  "name": "Gran Farmacia Gran",
+  "alias": [
+    "La gran"
+  ],
+  "type": [
+    {
+      "coding": [
+        {
+          "code": "PHARM",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "display": "Pharmacy"
+        }
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(+56) 234221678",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "line": [
+      "Calle 10 Norte, 1240, Viña del Mar"
+    ],
+    "city": "05109",
+    "district": "051",
+    "state": "05",
+    "country": "152"
+  },
+  "position": {
+    "longitude": 42.2565,
+    "latitude": -71.550261
+  },
+  "managingOrganization": {
+    "reference": "Organization/ORG1"
+  },
+  "hoursOfOperation": [
+    {
+      "daysOfWeek": [
+        "sat"
+      ],
+      "allDay": false,
+      "openingTime": "19:00:00"
+    }
+  ]
+}

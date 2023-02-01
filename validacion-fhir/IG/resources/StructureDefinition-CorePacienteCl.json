@@ -1,0 +1,594 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CorePacienteCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Base.Individuals"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl",
+  "version": "0.1.0",
+  "name": "PacienteCl",
+  "title": "CL Paciente",
+  "status": "active",
+  "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica. Sin embargo, se ha modelado con el fin de cubrir las necesidades nacionales de un Recurso Paciente para un Historial Clínico Nacional",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "cda",
+      "uri": "http://hl7.org/v3/cda",
+      "name": "CDA (R2)"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "loinc",
+      "uri": "http://loinc.org",
+      "name": "LOINC code for the element"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Patient",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Patient",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Patient.extension",
+        "path": "Patient.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Extensión de Nacionalidad para pacientes extranjeros",
+        "definition": "Para hacer uso de esta extensión se debe agregar el path: extension.url = \"nacionalidad\""
+      },
+      {
+        "id": "Patient.extension:nacionalidad",
+        "path": "Patient.extension",
+        "sliceName": "nacionalidad",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier",
+        "path": "Patient.identifier",
+        "short": "Listados de Id de Paciente. De poseer una CI con RUN vigente, este DEBE ser ingresado",
+        "definition": "Este es el listado de Identificaciones de un paciente. Se procura como R2 el RUN, pero en caso de no existir ese identificador se debe ocupar otro nacional u otro otorgado por país extranjero",
+        "comment": "En caso de que el paciente posea una CI con número RUN válido, este debe ser ingresado como identificador, independiente de que tenga otros identificadores, los cuales también pueden ser ingresados. La identificación implica el ingreso del tipo de documento, el país de origen de ese documento y ev valor del identificador",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.extension",
+        "path": "Patient.identifier.extension",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.use",
+        "path": "Patient.identifier.use",
+        "definition": "Se definirá este uso siempre como \"official\" debido a que cualquier ID presentado para motivos de este perfil deb ser de este tipo",
+        "comment": "Se definirá como official pues en una primera etapa solo se considerarán los identidicadores en esa categoría. Para una segunda etapa se abrirá este elemento para cualquier clase de identificador",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.type",
+        "path": "Patient.identifier.type",
+        "short": "Tipo de documento de Id (Extensible)",
+        "definition": "Se define como tipo de documento de Id, aquel definido en el Sistema de Codificación V2-0203 de Hl7. Este sistema es extensible. Para pacientes sin documeto local deben especificar el de origen. Pacientes sin Id, deben usar el código MR = Local Medical Record, es decir numero del registro clínico abierto en el establecimiento",
+        "comment": "De haber RUN, este se debe usar. De haber Run temporal, se debe usar ese identificador. Pacientes sin identificador Chileno deben usar su CI o Pasaporte de origen. Pacientes sin identificación se debe registrar con el numero de registro clínico generado en el recinto de salud",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSTiposDocumentos",
+          "description": "Value Set de Tipos de Documentos y CI Nacionales"
+        }
+      },
+      {
+        "id": "Patient.identifier.type.extension",
+        "path": "Patient.identifier.type.extension",
+        "short": "País de Origen del Documento de Id",
+        "definition": "Se usa esta extensión para agregarle al tipo de documento el país de origen de este",
+        "min": 1
+      },
+      {
+        "id": "Patient.identifier.type.extension:paises",
+        "path": "Patient.identifier.type.extension",
+        "sliceName": "paises",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.type.coding",
+        "path": "Patient.identifier.type.coding",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.type.coding.system",
+        "path": "Patient.identifier.type.coding.system",
+        "short": "Sistema de identificación de tipos de documentos",
+        "definition": "Sistema mediante el cual se obtienen los códigos para un determinado tipo de documento",
+        "comment": "En la URL del sistema se describe el set de códigos. Por ejemplo si se desea usar Cédula de identidad el código es NNxxx en donde xxx corresponde al identificador del país según la norma iso3166-1-N. Dado lo anterior si fuera Chile, el tipo de documento sería NNCL. En el Caso de Usar un Pasaporte este no requiere identificar país de origen dado que este es un elemento adicional, por lo que independiente del país el código será PPT según el VS indicado",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.type.coding.code",
+        "path": "Patient.identifier.type.coding.code",
+        "short": "Código de Tipo de Documento",
+        "definition": "Código de Tipo de Documento",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.type.coding.display",
+        "path": "Patient.identifier.type.coding.display",
+        "short": "Glosa del Código Documento",
+        "definition": "Glosa del Código Documento",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name",
+        "path": "Patient.name",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "use"
+            }
+          ],
+          "rules": "open",
+          "description": "Este slice se genera para diferenciar el nombre registrado Versus el nombre social"
+        },
+        "short": "Nombres y Apellidos del Paciente considerando, según el caso: 1er Nombre, Nombres, 1er Apellido y 2o Apellido",
+        "definition": "Nombre del Paciente considerando, según el caso: 1er Nombre, Nombres, 1er Apellido y 2o Apellido",
+        "min": 1
+      },
+      {
+        "id": "Patient.name:NombreOficial",
+        "path": "Patient.name",
+        "sliceName": "NombreOficial",
+        "short": "Determinación del nombre registrado oficialmente del Paciente",
+        "definition": "Determinación del nombre registrado oficialmente del Paciente",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreOficial.use",
+        "path": "Patient.name.use",
+        "short": "uso del nombre del paciente",
+        "definition": "este slice corresponde al nombre registrado al momento de nacer, por lo que se fuerza el valor \"official\"",
+        "comment": "Para ser considerado como el slice determinado para el uso de nombre completo, el use DEBE ser de valor de código \"official\"",
+        "min": 1,
+        "patternCode": "official",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreOficial.family",
+        "path": "Patient.name.family",
+        "short": "1er Apellido",
+        "definition": "Se define el primer apellido registrado al momento de nacer o aquel que se ha inscrito legalmente en el Registro Civil",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreOficial.family.extension",
+        "path": "Patient.name.family.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Extensión para 2o apellido",
+        "definition": "Extensión para la declaracion de un segundo apellido"
+      },
+      {
+        "id": "Patient.name:NombreOficial.family.extension:mothers-family",
+        "path": "Patient.name.family.extension",
+        "sliceName": "mothers-family",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreOficial.given",
+        "path": "Patient.name.given",
+        "short": "Primer nombre y nombres del Paciente",
+        "definition": "Todos los nombres de los pacientes no necesariamente solo el Primer Nombre",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreSocial",
+        "path": "Patient.name",
+        "sliceName": "NombreSocial",
+        "short": "nombre recurrente que usa el paciente",
+        "definition": "Nombre con el cual se identifica al paciente sin ser este oficial. Se especifica slo en el uso del nombre",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreSocial.use",
+        "path": "Patient.name.use",
+        "short": "uso que se le da al nombre",
+        "definition": "Este uso especifico se enfoca a la definición de un nombre social. Es por esta razón que el uso se fuerza a usual",
+        "comment": "Para ser considerado como el slice determinado para el uso de nombre social, el use DEBE ser de valor de código \"usual\"",
+        "min": 1,
+        "patternCode": "usual",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreSocial.text",
+        "path": "Patient.name.text",
+        "max": "0"
+      },
+      {
+        "id": "Patient.name:NombreSocial.family",
+        "path": "Patient.name.family",
+        "max": "0"
+      },
+      {
+        "id": "Patient.name:NombreSocial.given",
+        "path": "Patient.name.given",
+        "short": "Nombre Social",
+        "definition": "Nombre Social",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:NombreSocial.prefix",
+        "path": "Patient.name.prefix",
+        "max": "0"
+      },
+      {
+        "id": "Patient.name:NombreSocial.suffix",
+        "path": "Patient.name.suffix",
+        "max": "0"
+      },
+      {
+        "id": "Patient.name:NombreSocial.period",
+        "path": "Patient.name.period",
+        "max": "0"
+      },
+      {
+        "id": "Patient.telecom",
+        "path": "Patient.telecom",
+        "short": "Detalles de contacto del Paciente",
+        "definition": "Detalles del contacto de un paciente comunmente el o los mas usados (Ej: Teléfono fijo, móvil, email, etc.)",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.telecom.system",
+        "path": "Patient.telecom.system",
+        "definition": "Forma de telecomunicación para el punto de contacto: qué sistema de comunicación se requiere para hacer uso del contacto.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system",
+          "description": "Tipo de contacto para HL7 FHIR"
+        }
+      },
+      {
+        "id": "Patient.telecom.value",
+        "path": "Patient.telecom.value",
+        "short": "Dato del contato del paciente descrito",
+        "definition": "Valor del contacto como por ejemplo el numero de telefono fijo o de móvil o el email del Paciente",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.telecom.use",
+        "path": "Patient.telecom.use",
+        "short": "home | work | temp | old | mobile",
+        "definition": "Propósito para el contacto que se ha definido",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use"
+        }
+      },
+      {
+        "id": "Patient.gender",
+        "path": "Patient.gender",
+        "short": "Sexo de nacimiento Registrado, male | female | other | unknown (requerido)",
+        "definition": "Sexo de nacimiento Registrado",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.birthDate",
+        "path": "Patient.birthDate",
+        "short": "Fecha de nacimiento del Paciente. El formato debe ser YYYY-MM-DD",
+        "definition": "Fecha de nacimiento del Paciente. El formato debe ser YYYY-MM-DD (Ej: 1996-08-21)",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.address",
+        "path": "Patient.address",
+        "type": [
+          {
+            "code": "Address",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/cl-address"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact",
+        "path": "Patient.contact",
+        "short": "Contacto, tutor legal o representante del Paciente",
+        "definition": "Contacto, tutor legal o representante del Paciente",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.extension",
+        "path": "Patient.contact.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Patient.contact.extension:IdContacto",
+        "path": "Patient.contact.extension",
+        "sliceName": "IdContacto",
+        "short": "Identificación del Contacto",
+        "definition": "Extensión para declarar identificación del contacto y la procedencia de esta",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/IdContacto"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship",
+        "path": "Patient.contact.relationship",
+        "short": "Relación legal o de paretezco entre el contacto y el paciente",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
+          "description": "VS FHIR para relación del contacto con el Paciente"
+        }
+      },
+      {
+        "id": "Patient.contact.relationship.coding",
+        "path": "Patient.contact.relationship.coding",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship.coding.system",
+        "path": "Patient.contact.relationship.coding.system",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship.coding.code",
+        "path": "Patient.contact.relationship.coding.code",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship.coding.display",
+        "path": "Patient.contact.relationship.coding.display",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.name",
+        "path": "Patient.contact.name",
+        "short": "Nombre del Contacto",
+        "definition": "Nombre del contacto asociado al paciente",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.name.use",
+        "path": "Patient.contact.name.use",
+        "short": "uso del nombre del paciente",
+        "definition": "Nombre registrado oficialmente en el Registro Civil",
+        "comment": "El use DEBE ser de valor de código ´official´",
+        "patternCode": "official",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.name.family",
+        "path": "Patient.contact.name.family",
+        "short": "1er Apellido",
+        "definition": "Se define el primer apellido registrado al momento de nacer o aquel que se ha inscrito legalmente en el Registro Civil",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.name.family.extension",
+        "path": "Patient.contact.name.family.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Extensión para 2o apellido",
+        "definition": "Extensión para la declaracion de un segundo apellido",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.name.family.extension:mothers-family",
+        "path": "Patient.contact.name.family.extension",
+        "sliceName": "mothers-family",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.name.given",
+        "path": "Patient.contact.name.given",
+        "short": "Primer nombre y nombres del Contacto o Representante Legal",
+        "definition": "Todos los nombres  no necesariamente solo el Primero",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.communication",
+        "path": "Patient.communication",
+        "short": "Lenguaje en el cual se puede comunicar con el paciente",
+        "definition": "Lenguaje en el cual se puede comunicar con el paciente",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.communication.language",
+        "path": "Patient.communication.language",
+        "short": "Lenguaje específico",
+        "definition": "Código del lenguaje específico",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigoslenguaje",
+          "description": "Value Set de HL7, # de elementos es muy grande para poder visualizarlo"
+        }
+      },
+      {
+        "id": "Patient.communication.language.coding",
+        "path": "Patient.communication.language.coding",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.communication.language.coding.system",
+        "path": "Patient.communication.language.coding.system",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.communication.language.coding.code",
+        "path": "Patient.communication.language.coding.code",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.communication.language.coding.display",
+        "path": "Patient.communication.language.coding.display",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.generalPractitioner",
+        "path": "Patient.generalPractitioner",
+        "short": "Proveedor de Salud designado como principal",
+        "definition": "Proveedor de Salud designado como principal",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://hl7.org/fhir/StructureDefinition/Practitioner"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.generalPractitioner.reference",
+        "path": "Patient.generalPractitioner.reference",
+        "short": "URI de referencia a la Organización o a un Médico",
+        "definition": "URI de referencia a la Organización o a un Médico",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.generalPractitioner.display",
+        "path": "Patient.generalPractitioner.display",
+        "short": "Texto alternativo a la referencia",
+        "definition": "Texto alternativo a la referencia",
+        "mustSupport": true
+      }
+    ]
+  }
+}

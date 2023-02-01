@@ -1,0 +1,232 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "cl-address",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/cl-address",
+  "version": "1.0.0",
+  "name": "ClAddress",
+  "title": "CL Address",
+  "status": "active",
+  "description": "Variable dirección",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "servd",
+      "uri": "http://www.omg.org/spec/ServD/1.0/",
+      "name": "ServD"
+    },
+    {
+      "identity": "vcard",
+      "uri": "http://w3.org/vcard",
+      "name": "vCard Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "type": "Address",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Address",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Address",
+        "path": "Address",
+        "short": "Tipo de dato para agragar la dirección de un paciente",
+        "comment": "Variable dirección"
+      },
+      {
+        "id": "Address.extension",
+        "path": "Address.extension",
+        "definition": "Formato Chileno para la definición de direcciones"
+      },
+      {
+        "id": "Address.use",
+        "path": "Address.use",
+        "short": "Definición del tipo de domicilio home | work | temp | old (requerido)",
+        "definition": "Se especifica el tipo de dirección notificada. Esto debe ser segun los códigos definidos por HL7 FHIR",
+        "mustSupport": true
+      },
+      {
+        "id": "Address.line",
+        "path": "Address.line",
+        "short": "Calle o avenida, numero y casa o depto",
+        "definition": "Aquí se escribe toda la dirección completa",
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Address.city",
+        "path": "Address.city",
+        "short": "Campo para Comuna de residencia",
+        "definition": "Campo para Comuna de residencia.",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Address.city.extension",
+        "path": "Address.city.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Código de Comunas",
+        "definition": "Código de Comunas",
+        "min": 1
+      },
+      {
+        "id": "Address.city.extension:comunas",
+        "path": "Address.city.extension",
+        "sliceName": "comunas",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ComunasCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Address.district",
+        "path": "Address.district",
+        "short": "Campo para Provincia de Residencia",
+        "definition": "Campo para Provincia de Residencia. Se usa el valueSet de códigos de provicias definidos a nivel naciona.",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Address.district.extension",
+        "path": "Address.district.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Código de Regiones",
+        "definition": "Código de Regiones",
+        "min": 1
+      },
+      {
+        "id": "Address.district.extension:provincias",
+        "path": "Address.district.extension",
+        "sliceName": "provincias",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ProvinciasCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Address.state",
+        "path": "Address.state",
+        "short": "Campo para la Región",
+        "definition": "Campo Región. Se usa el valueSet de códigos de regiones definidos a nivel naciona.",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Address.state.extension",
+        "path": "Address.state.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Código de Regiones",
+        "definition": "Código de Regiones",
+        "min": 1
+      },
+      {
+        "id": "Address.state.extension:regiones",
+        "path": "Address.state.extension",
+        "sliceName": "regiones",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RegionesCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Address.country",
+        "path": "Address.country",
+        "short": "Campo para País de Residencia",
+        "definition": "Campo para País de Residencia",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Address.country.extension",
+        "path": "Address.country.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Código de Países",
+        "definition": "Código de Países",
+        "min": 1
+      },
+      {
+        "id": "Address.country.extension:paises",
+        "path": "Address.country.extension",
+        "sliceName": "paises",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises"
+            ]
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

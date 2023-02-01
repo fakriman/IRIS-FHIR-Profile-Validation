@@ -1,0 +1,13 @@
+{
+  "resourceType": "Patient",
+  "id": "11",
+  "name": [
+    {
+      "given": [
+        "Yanara Salinas"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-01-02"
+}

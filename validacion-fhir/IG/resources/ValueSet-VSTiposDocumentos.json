@@ -1,0 +1,43 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "VSTiposDocumentos",
+  "id": "VSTiposDocumentos",
+  "title": "Tipos de Documentos",
+  "description": "Tipos de Documentos para identificación según tabla HL7 V3 y CodeSystem local.",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSTiposDocumentos",
+  "date": "2022-01-18T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI"
+      },
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0203"
+      }
+    ]
+  }
+}

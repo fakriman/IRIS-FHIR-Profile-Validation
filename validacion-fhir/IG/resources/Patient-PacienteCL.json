@@ -1,0 +1,236 @@
+{
+  "resourceType": "Patient",
+  "id": "PacienteCL",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "family": "Rosales",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family",
+            "valueString": "Bosh"
+          }
+        ]
+      },
+      "given": [
+        "Marietta",
+        "María",
+        "Ximena"
+      ]
+    },
+    {
+      "use": "usual",
+      "given": [
+        "Xime"
+      ]
+    }
+  ],
+  "identifier": [
+    {
+      "type": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:iso:std:iso:3166",
+                  "code": "152",
+                  "display": "Chile"
+                }
+              ]
+            }
+          }
+        ],
+        "coding": [
+          {
+            "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI",
+            "code": "NNCHL",
+            "display": "Chile"
+          }
+        ]
+      },
+      "use": "official",
+      "system": "http://regcivil.cl/Validacion/RUN",
+      "value": "15.236.327-k"
+    }
+  ],
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "Av Los Chirimoyos, 32, casa 4"
+      ],
+      "_city": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ComunasCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodComunasCL",
+                  "code": "05602",
+                  "display": "Algarrobo"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "_district": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ProvinciasCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodProvinciasCL",
+                  "code": "056",
+                  "display": "San Antonio"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "_state": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RegionesCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodRegionCL",
+                  "code": "05",
+                  "display": "Valparaíso"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "_country": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:iso:std:iso:3166",
+                  "code": "CL",
+                  "display": "Chile"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "active": true,
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "mobile",
+      "value": "943561833"
+    },
+    {
+      "system": "email",
+      "use": "work",
+      "value": "mariRosal@mimail.com"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-03-24",
+  "contact": [
+    {
+      "extension": [
+        {
+          "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/IdContacto",
+          "extension": [
+            {
+              "url": "tutId",
+              "valueIdentifier": {
+                "type": {
+                  "coding": [
+                    {
+                      "code": "NNCHL",
+                      "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI",
+                      "display": "Chile"
+                    }
+                  ]
+                },
+                "system": "http://regcivil.cl/Validacion/RUN",
+                "value": "8987321-7"
+              }
+            },
+            {
+              "url": "docProc",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "urn:iso:std:iso:3166",
+                    "code": "152",
+                    "display": "Chile"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationship": [
+        {
+          "coding": [
+            {
+              "code": "N",
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+              "display": "Next-of-Kin"
+            }
+          ]
+        }
+      ],
+      "name": {
+        "use": "official",
+        "family": "Calleja",
+        "_family": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family",
+              "valueString": "Morales"
+            }
+          ]
+        },
+        "given": [
+          "Juana",
+          "Josefa"
+        ]
+      }
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoslenguaje",
+            "code": "es-CL",
+            "display": "Spanish"
+          }
+        ]
+      }
+    }
+  ],
+  "generalPractitioner": [
+    {
+      "reference": "Organization/ORG1",
+      "display": "Hospital de la Vida"
+    }
+  ]
+}

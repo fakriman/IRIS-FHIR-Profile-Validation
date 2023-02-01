@@ -1,0 +1,31 @@
+{
+  "resourceType": "Medication",
+  "id": "MedicamentoCl",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreMedicamentoCl"
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://minsal.cl/semantikos/description-id",
+      "use": "official",
+      "value": "1991971000167110"
+    },
+    {
+      "system": "http://minsal.cl/semantikos/concept-id",
+      "use": "official",
+      "value": "840851000167103"
+    }
+  ],
+  "code": {
+    "text": "Tareg - D 160 / 25 comprimido recubierto (Novartis)",
+    "coding": [
+      {
+        "system": "http://minsal.cl/semantikos/description-id",
+        "code": "1991971000167110",
+        "display": "Tareg - D 160 / 25 comprimido recubierto (Novartis)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoreLocalizacionCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Base.Entities"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "business"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreLocalizacionCl",
+  "version": "0.1.0",
+  "name": "LocalizacionCL",
+  "title": "CL Localización",
+  "status": "active",
+  "description": "Este perfil determina la ubicación especifica para un evento, objeto o Infraestructura específica. Este perfil permite vinlcular la localización especifica con una organización o espacio físico específico",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Location",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Location",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Location.identifier",
+        "path": "Location.identifier",
+        "short": "Corresponde a un numero de identificación de la locación indicada",
+        "definition": "Es el número de identificación la localización de Recinto, Edificio, ubicación, etc",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.identifier.system",
+        "path": "Location.identifier.system",
+        "short": "URI  en donde se encuentran los VS de ubicaciones.",
+        "definition": "URL en donde se indican el conjunto de ubicaciones deseadas",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.identifier.value",
+        "path": "Location.identifier.value",
+        "short": "Número identificador",
+        "definition": "Valor de identificación con el cual se asigna un identificador a este recurso"
+      },
+      {
+        "id": "Location.status",
+        "path": "Location.status",
+        "definition": "Determina el estado de la localización conforme a los códigos definidos por el estándar. Existen los estados de \"activo | suspendido | inactivo\"",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/location-status",
+          "description": "Códigos del estado de la localización de HL7 FHIR"
+        }
+      },
+      {
+        "id": "Location.name",
+        "path": "Location.name",
+        "short": "Nombre oficial de la localizacion",
+        "definition": "Nombre de la localizacion, ya sea del edificio, del la zona gegráfica como un parque o de un sector específico llamado de cierta forma",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.alias",
+        "path": "Location.alias",
+        "short": "Nombre de fantasía de la localización",
+        "definition": "Nombre no oficial del sector, que puede ser identificado de manera polular para contar con una referencia de la comunidad",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.type",
+        "path": "Location.type",
+        "short": "Tipo de la localización, según V3 Value SetServiceDeliveryLocationRoleType (Extensible)",
+        "definition": "Indica el tipo o función que se ejecuta en la locacalización",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.type.coding.system",
+        "path": "Location.type.coding.system",
+        "short": "Sistema de códigos bajo el cual se identifica el tipo o función de la localización",
+        "definition": "Tipos de localización segun tabla de HL7 Internacional. Es de tipo extensible para poder agregar mas elementos en caso de ser requerido",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType",
+          "description": "Códigos V3 de Servicios brindados"
+        }
+      },
+      {
+        "id": "Location.type.coding.code",
+        "path": "Location.type.coding.code",
+        "short": "Código del tipo",
+        "definition": "Valor del Código",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.type.coding.display",
+        "path": "Location.type.coding.display",
+        "short": "Glosa del código",
+        "definition": "Texto que identifica en glosa al código expresado"
+      },
+      {
+        "id": "Location.telecom",
+        "path": "Location.telecom",
+        "short": "Detalles de contacto de la ubicación",
+        "definition": "Detalles de contacto para la ubicación comunmente el o los mas usados (Ej: Teléfono fijo, móvil, email, etc.)",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.telecom.system",
+        "path": "Location.telecom.system",
+        "definition": "Forma de telecomunicación para el punto de contacto: qué sistema de comunicación se requiere para hacer uso del contacto.",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system",
+          "description": "VS HL7 FHIR tipos diferentes de medios de contacto"
+        }
+      },
+      {
+        "id": "Location.telecom.value",
+        "path": "Location.telecom.value",
+        "short": "Dato del contato de la ubicación descrita",
+        "definition": "Valor del contacto como por ejemplo el numero de telefono fijo o de móvil o el email del Paciente"
+      },
+      {
+        "id": "Location.telecom.use",
+        "path": "Location.telecom.use",
+        "short": "home | work | temp | old | mobile",
+        "definition": "Propósito para el contacto que se ha definido",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use"
+        }
+      },
+      {
+        "id": "Location.address",
+        "path": "Location.address",
+        "short": "Dirección de la Localiación",
+        "definition": "Se definirá la dirección en una línea y se podría codificar en city la comuna, en district la provincia y en state la región",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.address.use",
+        "path": "Location.address.use",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.address.line",
+        "path": "Location.address.line",
+        "short": "Calle o avenida, numero y casa o depto",
+        "definition": "Aquí se escribe toda la dirección completa",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.address.city",
+        "path": "Location.address.city",
+        "short": "Campo para Comuna de residencia",
+        "definition": "Campo para Comuna de residencia. Se usa el valueSet de códigos de comunas definidos a nivel naciona.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosComunaCL",
+          "description": "Códigos Comuna, Ministerio del Interior, 2018"
+        }
+      },
+      {
+        "id": "Location.address.district",
+        "path": "Location.address.district",
+        "short": "Campo para Provincia de Residencia",
+        "definition": "Campo para Provincia de Residencia. Se usa el valueSet de códigos de provicias definidos a nivel naciona.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosProvinciasCL",
+          "description": "Códigos Provincia, Ministerio del Interior, 2018"
+        }
+      },
+      {
+        "id": "Location.address.state",
+        "path": "Location.address.state",
+        "short": "Campo para la Región",
+        "definition": "Campo Región. Se usa el valueSet de códigos de regiones definidos a nivel naciona.",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosRegionesCL",
+          "description": "Códigos Regiones, Ministerio del Interior, 2018"
+        }
+      },
+      {
+        "id": "Location.address.country",
+        "path": "Location.address.country",
+        "short": "Campo para País de Residencia",
+        "definition": "Campo para País de Residencia",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/CodPais"
+        }
+      },
+      {
+        "id": "Location.position",
+        "path": "Location.position",
+        "short": "Geoposisionamiento del objeto, infraestructura o evento en longitud y latitud",
+        "definition": "La localización geográfica absoluta de la Ubicación, expresada utilizando el datum WGS84 (Este es el mismo sistema de coordenadas utilizado en KML)",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.position.longitude",
+        "path": "Location.position.longitude",
+        "short": "Longitud valor decimal en WGS84 datum (World Geodetic System 1984)",
+        "definition": "Longitud. El dominio del valor y la interpretación son los mismos que para el texto del elemento longitud en KML",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.position.latitude",
+        "path": "Location.position.latitude",
+        "short": "Latitud valor decimal en formato WGS84 datum (World Geodetic System 1984)",
+        "definition": "Latitud. El dominio del valor y la interpretación son los mismos que para el texto del elemento latitud en KML",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.managingOrganization",
+        "path": "Location.managingOrganization",
+        "short": "Organización a la cual la ubicación pertenece, si es el caso. Esta relación se hace en base a una referencia a una Orgaización",
+        "definition": "La organización responsable de la localización.",
+        "comment": "Se puede usar para indicar la organzación jerárquica superior. Siempre debe existir una Organizacion jerarquicamente sobre la localizacion y en caso de no existir esta jerquia, se debe crear la organizacion, con los mismos datos del location.",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.managingOrganization.reference",
+        "path": "Location.managingOrganization.reference",
+        "short": "Orgaización de referencia.",
+        "definition": "La organización responsable de la localización."
+      },
+      {
+        "id": "Location.managingOrganization.display",
+        "path": "Location.managingOrganization.display",
+        "short": "Nombre de la organización de referencia.",
+        "definition": "Nombre de la Orgaización de referencia."
+      },
+      {
+        "id": "Location.hoursOfOperation",
+        "path": "Location.hoursOfOperation",
+        "short": "Horario de atención de la localizacion.",
+        "definition": "¿Qué días/horas de la semana suele estar abierto este local?.",
+        "mustSupport": true
+      },
+      {
+        "id": "Location.availabilityExceptions",
+        "path": "Location.availabilityExceptions",
+        "short": "Descripción de Excepciones de ubicación habilitada.",
+        "definition": "Una descripción de los casos en los que la apertura de los lugares es diferente a la normal, por ejemplo, la disponibilidad de los días festivos. Una descripción sucinta de todas las posibles excepciones a la disponibilidad normal del centro, tal y como se detalla en el horario de apertura.",
+        "mustSupport": true
+      }
+    ]
+  }
+}

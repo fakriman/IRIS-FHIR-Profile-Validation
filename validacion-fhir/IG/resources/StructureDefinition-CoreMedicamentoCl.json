@@ -1,0 +1,158 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoreMedicamentoCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Clinical.Medications"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "business"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreMedicamentoCl",
+  "version": "0.1.0",
+  "name": "MedicamentoCL",
+  "title": "CL Medicamento",
+  "status": "active",
+  "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica desde la visión del TFC que se usará para poder manejar farmacos ya registrados, y que deberán ser consultados por los prestadores a la hora de prescribir algno.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "script10.6",
+      "uri": "http://ncpdp.org/SCRIPT10_6",
+      "name": "Mapping to NCPDP SCRIPT 10.6"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Medication",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Medication",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Medication.identifier",
+        "path": "Medication.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "Slices definidos para la identificación del fármaco, ya sea por Descripción o por concepto",
+        "definition": "Slice defindos en base a el elemento value, el cual debe ser especifico para cada uno de los slices definidos",
+        "comment": "Slice defindos en base a el elemento value. Sólo  se pueden usar los discriminadores definidos para los dos slices generados"
+      },
+      {
+        "id": "Medication.identifier:DescripcionId",
+        "path": "Medication.identifier",
+        "sliceName": "DescripcionId",
+        "short": "Identificador de Descripción del fármaco",
+        "definition": "Este identificador se obtiene a travez del TFC por medio de un identificador de Descripción del fármaco",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.identifier:DescripcionId.use",
+        "path": "Medication.identifier.use",
+        "short": "usual | official | temp | secondary | old",
+        "definition": "Para este caso se fuerza a que su uso sea \"official\"",
+        "patternCode": "official"
+      },
+      {
+        "id": "Medication.identifier:DescripcionId.system",
+        "path": "Medication.identifier.system",
+        "short": "http://minsal.cl/semantikos/description-id",
+        "definition": "http://minsal.cl/semantikos/description-id DEBE ser usada para este slice. Estos EndPoint deberán estar disponibles pronto",
+        "min": 1,
+        "patternUri": "http://minsal.cl/semantikos/description-id"
+      },
+      {
+        "id": "Medication.identifier:DescripcionId.value",
+        "path": "Medication.identifier.value",
+        "short": "Valor del código",
+        "definition": "Valor del código"
+      },
+      {
+        "id": "Medication.identifier:ConceptId",
+        "path": "Medication.identifier",
+        "sliceName": "ConceptId",
+        "short": "Este identificador se obtiene a travez del TFC por medio de un identificador de concepto",
+        "definition": "Este identificador se obtiene a travez del TFC por medio de un identificador del ConceptId del fármaco según SNOMED-CT",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.identifier:ConceptId.use",
+        "path": "Medication.identifier.use",
+        "short": "usual | official | temp | secondary | old",
+        "definition": "Para este caso se fuerza a que su uso sea \"official\"",
+        "patternCode": "official"
+      },
+      {
+        "id": "Medication.identifier:ConceptId.system",
+        "path": "Medication.identifier.system",
+        "short": "http://minsal.cl/semantikos/concept-id",
+        "definition": "http://minsal.cl/semantikos/concept-id DEBE ser usada para este slice. Estos EndPoint deberán estar disponibles pronto",
+        "min": 1,
+        "patternUri": "http://minsal.cl/semantikos/concept-id"
+      },
+      {
+        "id": "Medication.identifier:ConceptId.value",
+        "path": "Medication.identifier.value",
+        "short": "Valor del código",
+        "definition": "Valor del código"
+      },
+      {
+        "id": "Medication.code",
+        "path": "Medication.code",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.code.coding.system",
+        "path": "Medication.code.coding.system",
+        "short": "En principio el endPoint puede ser este, pero cada sistema localmente puede generar su TFC. \"http://minsal.cl/semantikos/description-id\"",
+        "definition": "Si bien se dispondrá públicamente de un endPoint en el Servidor Semantikos del MINSAL, la BD de la TFC es libre distribución por lo que puede ser levantada Localmente "
+      },
+      {
+        "id": "Medication.code.coding.code",
+        "path": "Medication.code.coding.code",
+        "short": "Código del farmaco desplegado por la TFC",
+        "definition": "Código del farmaco desplegado por la TFC"
+      },
+      {
+        "id": "Medication.code.coding.display",
+        "path": "Medication.code.coding.display",
+        "short": "descripción del farmaco entregada por la TFC",
+        "definition": "descripción del farmaco entregada por la TFC"
+      },
+      {
+        "id": "Medication.code.text",
+        "path": "Medication.code.text",
+        "short": "Esto código define el fármaco que contiene el recurso. El código corresponde al determinado en la Termnología Frarmaceutica Chilena (TFC)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSrazonnoencuentro",
+  "id": "csrazonnoencuentro",
+  "title": "Razón Encuentro Remoto no Realizado",
+  "description": "Códigos de las razones por la cual un encuentro remoto no pudo realizarse según indicaciones del Ministerio de Salud",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/csrazonnoencuentro",
+  "concept": [
+    {
+      "code": "pierdellam",
+      "display": "Participante pierde llamada",
+      "definition": "Indica la pérdida de una llamada con el paciete"
+    },
+    {
+      "code": "finallam",
+      "display": "El participante finalizó la llamada abruptamente",
+      "definition": "Indica la finalización de una llamada de forma abrupta"
+    },
+    {
+      "code": "problcon",
+      "display": "El participante tuvo problemas de conexión a internet",
+      "definition": "Indica que existieron problemas de conexión a internet para conectarse con el médico"
+    },
+    {
+      "code": "medicoproblcon",
+      "display": "Tuve problemas de conexión a internet",
+      "definition": "Indica problemas de conexión a internet que tuvo el médico"
+    },
+    {
+      "code": "otros",
+      "display": "Otros, texto libre",
+      "definition": "Cualquier otro motivo"
+    }
+  ],
+  "date": "2022-05-22T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 5
+}

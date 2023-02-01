@@ -1,0 +1,74 @@
+{
+  "resourceType": "Immunization",
+  "id": "ImmunizationCL",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ImmunizationCL"
+    ]
+  },
+  "statusReason": {
+    "extension": [
+      {
+        "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RazonNOrealizarseInm",
+        "valueCode": "solicitudPaci"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/NombreCampana",
+      "valueCoding": {
+        "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSNombreCampana",
+        "code": "hepatiA",
+        "display": "Hepatitis A"
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "system": "http://sgi.gob.cl/identifier/inmunization/rni/",
+      "value": "136588279"
+    }
+  ],
+  "status": "completed",
+  "patient": {
+    "reference": "Patient/11"
+  },
+  "occurrenceDateTime": "2022-04-07T00:00:00-04:00",
+  "recorded": "2021-06-24T00:00:00-04:00",
+  "location": {
+    "reference": "Location/3333458",
+    "extension": [
+      {
+        "valueCoding": {
+          "code": "SSAN",
+          "system": "https://minsal.cl/fhir/HD/CodeSystem/CSCodSSalud",
+          "display": "Servicio de Salud Antofagasta"
+        },
+        "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ServicioSalud"
+      }
+    ]
+  },
+  "vaccineCode": {
+    "extension": [
+      {
+        "valueCode": "hep_A",
+        "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposVacunaRNI"
+      }
+    ]
+  },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Organization/f003"
+      }
+    }
+  ],
+  "protocolApplied": [
+    {
+      "doseNumberString": "1º dosis"
+    }
+  ],
+  "lotNumber": "T3E881V",
+  "expirationDate": "2022-03-31"
+}

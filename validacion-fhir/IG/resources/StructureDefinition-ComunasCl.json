@@ -1,0 +1,103 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ComunasCl",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ComunasCl",
+  "version": "0.1.0",
+  "name": "ComunasCl",
+  "title": "Códigos para Comunas en Chile",
+  "status": "active",
+  "description": "Esta extensión que permite codiificar las Comunas en Chile en el campo de Dirección",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Códigos para Comunas en Chile",
+        "definition": "Esta extensión que permite codiificar las Comunas en Chile en el campo de Dirección"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ComunasCl",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Código de Comunas",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "Extension.valueCodeableConcept",
+        "path": "Extension.valueCodeableConcept",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Extension.valueCodeableConcept.coding",
+        "path": "Extension.valueCodeableConcept.coding",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.valueCodeableConcept.coding.system",
+        "path": "Extension.valueCodeableConcept.coding.system",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.valueCodeableConcept.coding.code",
+        "path": "Extension.valueCodeableConcept.coding.code",
+        "min": 1,
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosComunaCL"
+        }
+      },
+      {
+        "id": "Extension.valueCodeableConcept.coding.display",
+        "path": "Extension.valueCodeableConcept.coding.display",
+        "mustSupport": true
+      }
+    ]
+  }
+}

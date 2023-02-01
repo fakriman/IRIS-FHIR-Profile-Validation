@@ -1,0 +1,313 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImmunizationCL",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Clinical.Medications"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ImmunizationCL",
+  "version": "0.1.0",
+  "name": "ImmunizationCL",
+  "title": "CL Inmunización",
+  "status": "active",
+  "description": "Definición de un evento de inmunización para las necesidades de interoperabilidad en Chile.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "cda",
+      "uri": "http://hl7.org/v3/cda",
+      "name": "CDA (R2)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Immunization",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Immunization",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Immunization.extension",
+        "path": "Immunization.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Immunization.extension:campana",
+        "path": "Immunization.extension",
+        "sliceName": "campana",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/NombreCampana"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Immunization.identifier",
+        "path": "Immunization.identifier",
+        "short": "Identificador(es) por los que se conoce este registro de Inmunización",
+        "definition": "Es el número de identificación del evento donde a un paciente se le administra una vacuna o registro de inmunización",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.status",
+        "path": "Immunization.status",
+        "definition": "Indica el estado actual del evento de inmunización",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.statusReason",
+        "path": "Immunization.statusReason",
+        "short": "Razón de no realizarse la inmunización",
+        "definition": "Indica la razón por la que no se realizó el evento de inmunización",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.statusReason.extension",
+        "path": "Immunization.statusReason.extension",
+        "short": "Motivo de no realizar la inmunización",
+        "min": 1
+      },
+      {
+        "id": "Immunization.statusReason.extension:statusReason",
+        "path": "Immunization.statusReason.extension",
+        "sliceName": "statusReason",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RazonNOrealizarseInm"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Immunization.vaccineCode",
+        "path": "Immunization.vaccineCode",
+        "short": "Vacuna que se administró o se iba a administrar",
+        "definition": "Vacuna que se administró o se iba a administrar. Se proporciona valores que utilizan en el RNI (Registro Nacional de Inmunizaciones)",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.vaccineCode.extension",
+        "path": "Immunization.vaccineCode.extension",
+        "short": "Nombre de vacuna administrada",
+        "min": 1
+      },
+      {
+        "id": "Immunization.vaccineCode.extension:tipov",
+        "path": "Immunization.vaccineCode.extension",
+        "sliceName": "tipov",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposVacunaRNI"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Immunization.patient",
+        "path": "Immunization.patient",
+        "short": "Quién fue inmunizado",
+        "definition": "El paciente que recibió o no recibió la inmunización",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.occurrenceDateTime",
+        "path": "Immunization.occurrenceDateTime",
+        "short": "Fecha de administración de la vacuna",
+        "definition": "Fecha y hora en la que se realiza la inmunización o se administra la vacuna",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.recorded",
+        "path": "Immunization.recorded",
+        "short": "Cuando la inmunización se capturó por primera vez en el registro del sujeto",
+        "definition": "La fecha en que se registró por primera vez la ocurrencia de la inmunización, potencialmente significativamente después de la ocurrencia del evento",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.location",
+        "path": "Immunization.location",
+        "short": "Dónde se produjo la inmunización",
+        "definition": "El lugar donde se produjo la administración de la vacuna",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreLocalizacionCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.location.extension",
+        "path": "Immunization.location.extension",
+        "short": "Extensión para los Sistemas de Salud, por ejemplo: S.S Viña del mar Quillota",
+        "min": 1
+      },
+      {
+        "id": "Immunization.location.extension:ssalud",
+        "path": "Immunization.location.extension",
+        "sliceName": "ssalud",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ServicioSalud"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Immunization.lotNumber",
+        "path": "Immunization.lotNumber",
+        "short": "Número de lote de la vacuna",
+        "definition": "Número de lote del producto de la vacuna",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.expirationDate",
+        "path": "Immunization.expirationDate",
+        "short": "Fecha de caducidad de la vacuna",
+        "definition": "Fecha de vencimiento del lote de la vacuna",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.performer",
+        "path": "Immunization.performer",
+        "short": "Quién realizó el evento",
+        "definition": "Indica quién realizó el evento de inmunización",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.performer.actor",
+        "path": "Immunization.performer.actor",
+        "short": "Practicante u organización que realizó la acción",
+        "definition": "Practicante u organización que realizó la acción",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePrestadorCl",
+              "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreOrganizacionCl"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.programEligibility",
+        "path": "Immunization.programEligibility",
+        "short": "Indica la elegibilidad de un paciente para un programa de financiamiento",
+        "definition": "Indica la elegibilidad de un paciente para un programa de financiamiento",
+        "mustSupport": true,
+        "binding": {
+          "strength": "example",
+          "valueSet": "http://hl7.org/fhir/ValueSet/immunization-program-eligibility"
+        }
+      },
+      {
+        "id": "Immunization.reaction",
+        "path": "Immunization.reaction",
+        "short": "Detalles de una reacción que proviene de la inmunización",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.reaction.date",
+        "path": "Immunization.reaction.date",
+        "short": "Cuándo comenzó la reacción",
+        "definition": "Fecha de reacción a la inmunización"
+      },
+      {
+        "id": "Immunization.protocolApplied",
+        "path": "Immunization.protocolApplied",
+        "short": "Protocolo seguido por el proveedor",
+        "definition": "El protocolo (conjunto de recomendaciones) que sigue el proveedor que administró la dosis",
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Immunization.protocolApplied.doseNumberString",
+        "path": "Immunization.protocolApplied.doseNumberString",
+        "short": "Número de dosis dentro de la serie",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "resourceType": "Patient",
+  "id": "PacienteCl-3",
+  "meta": {
+    "versionId": "2",
+    "lastUpdated": "2021-07-13T00:22:41.166Z",
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "family": "PIZARRO",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family",
+            "valueString": "DELGADO"
+          }
+        ]
+      },
+      "given": [
+        "PABLO",
+        "RODRIGO"
+      ]
+    }
+  ],
+  "extension": [
+    {
+      "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "urn:iso:std:iso:3166",
+            "code": "152",
+            "display": "Chile"
+          }
+        ]
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "type": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:iso:std:iso:3166",
+                  "code": "152",
+                  "display": "Chile"
+                }
+              ]
+            }
+          }
+        ],
+        "coding": [
+          {
+            "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI",
+            "code": "NNCHL",
+            "display": "Chile"
+          }
+        ]
+      },
+      "use": "official",
+      "system": "http://regcivil.cl/Validacion/RUN",
+      "value": "15602754-5"
+    }
+  ],
+  "address": [
+    {
+      "use": "home",
+      "city": "13120",
+      "_city": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ComunasCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodComunasCL",
+                  "code": "15101",
+                  "display": "Arica"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "district": "131",
+      "_district": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ProvinciasCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodProvinciasCL",
+                  "code": "151",
+                  "display": "Arica"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "state": "13",
+      "_state": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RegionesCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodRegionCL",
+                  "code": "15",
+                  "display": "Arica y Parinacota"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "country": "152",
+      "_country": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:iso:std:iso:3166",
+                  "code": "CL",
+                  "display": "Chile"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "active": true,
+  "telecom": [
+    {
+      "system": "email",
+      "value": "ppizarro.delgado@minsal.cl",
+      "use": "work"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-08-04",
+  "deceasedBoolean": false
+}

@@ -1,0 +1,213 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "IdContacto",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/IdContacto",
+  "version": "0.1.0",
+  "name": "IdentificacionContactoCl",
+  "title": "Identificación del Contacto de un Paciente",
+  "status": "active",
+  "description": "Identificación de contacto de paciente en especial para casos en los cuales este actúa como Tutor Legal",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Identificación del Contacto de un Paciente",
+        "definition": "Identificación de contacto de paciente en especial para casos en los cuales este actúa como Tutor Legal"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "min": 2
+      },
+      {
+        "id": "Extension.extension:tutId",
+        "path": "Extension.extension",
+        "sliceName": "tutId",
+        "short": "Identificación del Tutor",
+        "definition": "Identificación del Tutor",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:tutId.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "tutId",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.value[x]",
+        "path": "Extension.extension.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1,
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:tutId.valueIdentifier",
+        "path": "Extension.extension.valueIdentifier",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.valueIdentifier.type",
+        "path": "Extension.extension.valueIdentifier.type",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.valueIdentifier.type.coding.system",
+        "path": "Extension.extension.valueIdentifier.type.coding.system",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.valueIdentifier.type.coding.code",
+        "path": "Extension.extension.valueIdentifier.type.coding.code",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.valueIdentifier.type.coding.display",
+        "path": "Extension.extension.valueIdentifier.type.coding.display",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.valueIdentifier.system",
+        "path": "Extension.extension.valueIdentifier.system",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:tutId.valueIdentifier.value",
+        "path": "Extension.extension.valueIdentifier.value",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:docProc",
+        "path": "Extension.extension",
+        "sliceName": "docProc",
+        "short": "País de procedencia del documento",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:docProc.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:docProc.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "docProc",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:docProc.value[x]",
+        "path": "Extension.extension.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1,
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:docProc.valueCodeableConcept",
+        "path": "Extension.extension.valueCodeableConcept",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/CodPais"
+        }
+      },
+      {
+        "id": "Extension.extension:docProc.valueCodeableConcept.coding",
+        "path": "Extension.extension.valueCodeableConcept.coding",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:docProc.valueCodeableConcept.coding.system",
+        "path": "Extension.extension.valueCodeableConcept.coding.system",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:docProc.valueCodeableConcept.coding.code",
+        "path": "Extension.extension.valueCodeableConcept.coding.code",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:docProc.valueCodeableConcept.coding.display",
+        "path": "Extension.extension.valueCodeableConcept.coding.display",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/IdContacto",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "max": "0"
+      }
+    ]
+  }
+}

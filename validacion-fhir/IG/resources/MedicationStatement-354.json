@@ -1,0 +1,17 @@
+{
+  "resourceType": "MedicationStatement",
+  "id": "354",
+  "status": "active",
+  "subject": {
+    "reference": "Patient/11"
+  },
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "code": "27658006",
+        "system": "http://snomed.info/sct",
+        "display": "Product containing amoxicillin (medicinal product)"
+      }
+    ]
+  }
+}

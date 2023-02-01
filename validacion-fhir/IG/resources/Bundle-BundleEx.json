@@ -1,0 +1,27 @@
+{
+  "resourceType": "Bundle",
+  "id": "BundleEx",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/BundleCl"
+    ]
+  },
+  "type": "transaction",
+  "timestamp": "2020-09-25T00:00:00-03:00",
+  "entry": [
+    {
+      "fullUrl": "Organization/ORG1",
+      "request": {
+        "method": "POST",
+        "url": "Organization"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/3020",
+      "request": {
+        "method": "POST",
+        "url": "Practitioner"
+      }
+    }
+  ]
+}

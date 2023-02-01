@@ -1,0 +1,83 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ContactoParticipantes",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ContactoParticipantes",
+  "version": "0.1.0",
+  "name": "ContactopartCL",
+  "title": "Contacto de los participantes secundarios del encuentro",
+  "status": "active",
+  "description": "Esta extensión incluye los códigos de los medios de contacto que se tiene para los participantes secundarios",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Contacto de los participantes secundarios del encuentro",
+        "definition": "Esta extensión incluye los códigos de los medios de contacto que se tiene para los participantes secundarios"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ContactoParticipantes"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "short": "Códigos de contactos",
+        "type": [
+          {
+            "code": "ContactPoint"
+          }
+        ]
+      },
+      {
+        "id": "Extension.valueContactPoint",
+        "path": "Extension.valueContactPoint",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Extension.valueContactPoint.system",
+        "path": "Extension.valueContactPoint.system",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSContactosec"
+        }
+      }
+    ]
+  }
+}

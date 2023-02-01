@@ -1,0 +1,93 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSCodServicioCL",
+  "id": "CSCodigoServicio",
+  "title": "Tipos de Servicios Remotos",
+  "description": "Códigos para los Servicios realizados en un encuentro remoto según indicaciones del Ministerio de Salud",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoServicio",
+  "concept": [
+    {
+      "code": "nutINTA",
+      "display": "Nutrición INTA"
+    },
+    {
+      "code": "nedINTA",
+      "display": "Medicina INTA"
+    },
+    {
+      "code": "medInt",
+      "display": "Medicina Interna"
+    },
+    {
+      "code": "saludMDigital",
+      "display": "Salud Mental Digital"
+    },
+    {
+      "code": "medGen",
+      "display": "Medicina General"
+    },
+    {
+      "code": "derm",
+      "display": "Dermatología"
+    },
+    {
+      "code": "telDiabetes",
+      "display": "Telemedicina Diabetes"
+    },
+    {
+      "code": "telRehab",
+      "display": "Tele rehabilitación"
+    },
+    {
+      "code": "otorrin",
+      "display": "Otorrinolaringología"
+    },
+    {
+      "code": "neurInf",
+      "display": "Neurología Infantil"
+    },
+    {
+      "code": "atencUrgAPS",
+      "display": "Atención de Urgencia APS"
+    },
+    {
+      "code": "vih",
+      "display": "VIH"
+    },
+    {
+      "code": "geri",
+      "display": "Geriatría"
+    },
+    {
+      "code": "gine",
+      "display": "Ginecología"
+    }
+  ],
+  "date": "2022-05-22T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 14
+}

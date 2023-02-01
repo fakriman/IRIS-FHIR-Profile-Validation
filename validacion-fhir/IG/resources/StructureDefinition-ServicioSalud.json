@@ -1,0 +1,65 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ServicioSalud",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ServicioSalud",
+  "version": "0.1.0",
+  "name": "ServicioSaludCL",
+  "title": "Sistema Nacional de Servicios de Salud",
+  "status": "active",
+  "description": "Esta extensión incluye los códigos de los Servicios de Salud que existen en el país",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "Sistema Nacional de Servicios de Salud",
+        "definition": "Esta extensión incluye los códigos de los Servicios de Salud que existen en el país"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ServicioSalud"
+      },
+      {
+        "id": "Extension.valueCoding",
+        "path": "Extension.valueCoding",
+        "short": "Servicios de Salud de Chile",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSCodigosServiciosSalud"
+        }
+      }
+    ]
+  }
+}

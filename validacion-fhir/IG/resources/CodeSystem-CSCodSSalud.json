@@ -1,0 +1,149 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "CSCodSSaludCL",
+  "id": "CSCodSSalud",
+  "title": "Servicios de Salud Chile",
+  "description": "Códigos del Sistema Nacional de Servicios de Salud",
+  "version": "1.0.0",
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodSSalud",
+  "concept": [
+    {
+      "code": "SSA",
+      "display": "Servicio de Salud Arica"
+    },
+    {
+      "code": "SSAN",
+      "display": "Servicio de Salud Antofagasta"
+    },
+    {
+      "code": "SSAT",
+      "display": "Servicio de Salud Atacama"
+    },
+    {
+      "code": "SSC",
+      "display": "Servicio de Salud Coquimbo"
+    },
+    {
+      "code": "SSVSA",
+      "display": "Servicio de Salud Valparaíso-San Antonio"
+    },
+    {
+      "code": "SSVQ",
+      "display": "Servicio de Salud Viña del Mar-Quillota"
+    },
+    {
+      "code": "SSAC",
+      "display": "Servicio de Salud Aconcagua"
+    },
+    {
+      "code": "SSMN",
+      "display": "Servicio de Salud Metropolitano Norte (SSMN)"
+    },
+    {
+      "code": "SSMOC",
+      "display": "Servicio de Salud Metropolitano Occidente (SSMOC)"
+    },
+    {
+      "code": "SSMC",
+      "display": "Servicio de Salud Metropolitano Central (SSMC)"
+    },
+    {
+      "code": "SSMS",
+      "display": "Servicio de Salud Metropolitano Sur (SSMS)"
+    },
+    {
+      "code": "SSMO",
+      "display": "Servicio de Salud Metropolitano Oriente (SSMO)"
+    },
+    {
+      "code": "SSMSO",
+      "display": "Servicio de Salud Metropolitano Sur Oriente (SSMSO)"
+    },
+    {
+      "code": "SSOH",
+      "display": "Servicio de Salud Libertador B. OHiggins"
+    },
+    {
+      "code": "SSM",
+      "display": "Servicio de Salud del Maule"
+    },
+    {
+      "code": "SSÑ",
+      "display": "Servicio de Salud Ñuble"
+    },
+    {
+      "code": "SSCO",
+      "display": "Servicio de Salud Concepción"
+    },
+    {
+      "code": "SSAR",
+      "display": "Servicio de Salud Arauco"
+    },
+    {
+      "code": "SST",
+      "display": "Servicio de Salud Talcahuano"
+    },
+    {
+      "code": "SSB",
+      "display": "Servicio de Salud Bíobío"
+    },
+    {
+      "code": "SSARN",
+      "display": "Servicio de Salud Araucanía Norte"
+    },
+    {
+      "code": "SSAS",
+      "display": "Servicio de Salud Araucanía Sur"
+    },
+    {
+      "code": "SSV",
+      "display": "Servicio de Salud Valdivia"
+    },
+    {
+      "code": "SSO",
+      "display": "Servicio de Salud Osorno"
+    },
+    {
+      "code": "SSR",
+      "display": "Servicio de Salud Reloncaví"
+    },
+    {
+      "code": "SSCH",
+      "display": "Servicio de Salud Chiloé"
+    },
+    {
+      "code": "SSAY",
+      "display": "Servicio de Salud Aysén"
+    },
+    {
+      "code": "SSMA",
+      "display": "Servicio de Salud Magallanes"
+    }
+  ],
+  "date": "2022-06-10T00:00:00-03:00",
+  "contact": [
+    {
+      "name": "HL7 Chile",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "chair@hl7chile.cl"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "CL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Chile"
+        }
+      ]
+    }
+  ],
+  "count": 28
+}

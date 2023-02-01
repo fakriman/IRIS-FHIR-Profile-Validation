@@ -1,0 +1,154 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "CoreEspecialidadCl",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Base.Individuals"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "individual"
+    }
+  ],
+  "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreEspecialidadCl",
+  "version": "0.1.0",
+  "name": "CoreEspecialidadCl",
+  "title": "CL RolClinico",
+  "status": "active",
+  "description": "Este Perfil ha sido desarrollado para cubrir las necesidades del Caso de Uso de Receta Electrónica. Sin embargo, se ha modelado con el fin de cubrir las necesidades nacionales de un Recurso de Especialidad Médica para la denominación de Prescriptor en Chile",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "servd",
+      "uri": "http://www.omg.org/spec/ServD/1.0/",
+      "name": "ServD"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "PractitionerRole",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "PractitionerRole.active",
+        "path": "PractitionerRole.active",
+        "patternBoolean": true
+      },
+      {
+        "id": "PractitionerRole.period",
+        "path": "PractitionerRole.period",
+        "short": "El período durante el cual el profesional está autorizado a desempeñar estas funciones.",
+        "definition": "El período durante el cual la persona está autorizada a actuar como profesional en estas funciones para la organización."
+      },
+      {
+        "id": "PractitionerRole.period.start",
+        "path": "PractitionerRole.period.start",
+        "short": "Fecha y Hora del inicio de las funciones especificadas.",
+        "definition": "Fecha y Hora del inicio de las funciones especificadas."
+      },
+      {
+        "id": "PractitionerRole.period.end",
+        "path": "PractitionerRole.period.end",
+        "short": "Fecha y Hora del término de las funciones especificadas.",
+        "definition": "Fecha y Hora del término de las funciones especificadas."
+      },
+      {
+        "id": "PractitionerRole.practitioner",
+        "path": "PractitionerRole.practitioner",
+        "short": "Referencia al Prestador  especialidad",
+        "definition": "La referencia al prestador de salud, al cual se le quieren asignar funciones o actividades de especialidad.",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.practitioner.reference",
+        "path": "PractitionerRole.practitioner.reference",
+        "short": "Referencia al uri del recurso Practitioner del prestador en cuestión",
+        "definition": "La referencia es una URI comunmente, la cual hace referencia al Prestador en cuestion",
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.practitioner.display",
+        "path": "PractitionerRole.practitioner.display",
+        "short": "Nombre del prestador de salud",
+        "definition": "Nombre completo del prestador de salud"
+      },
+      {
+        "id": "PractitionerRole.organization",
+        "path": "PractitionerRole.organization",
+        "short": "Referencia a la organización donde el presador cumple roles",
+        "definition": "La referencia a la organización en donde el prestador individual cumple roles.",
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.organization.reference",
+        "path": "PractitionerRole.organization.reference",
+        "short": "Referencia al uri del recurso organization del prestador en cuestión",
+        "definition": "La referencia es una URI comunmente, la cual hace referencia al organización en cuestion",
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.organization.display",
+        "path": "PractitionerRole.organization.display",
+        "short": "Nombre de la organización de salud",
+        "definition": "Nombre completo de la organización de salud"
+      },
+      {
+        "id": "PractitionerRole.specialty",
+        "path": "PractitionerRole.specialty",
+        "short": "Definición de la especialidad médica según DEIS",
+        "definition": "Definición de la especialidad médica según DEIS, en el decreto correspondiete. la tabla sigue siendo extensible ante futuros elementos agregados a esta",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.specialty.coding.code",
+        "path": "PractitionerRole.specialty.coding.code",
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://hl7chile.cl/fhir/ig/CoreCL/ValueSet/VSEspecialidadesDeisCL",
+          "description": "Códigos de Especialidad DEIS"
+        }
+      },
+      {
+        "id": "PractitionerRole.location",
+        "path": "PractitionerRole.location",
+        "short": "Referencia a la ubicación donde el presador cumple roles",
+        "definition": "La referencia a la ubicación en donde el prestador individual cumple roles.",
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.location.reference",
+        "path": "PractitionerRole.location.reference",
+        "short": "Referencia al uri del recurso location del prestador en cuestión",
+        "definition": "La referencia es una URI comunmente, la cual hace referencia a la ubicación en cuestion",
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.location.display",
+        "path": "PractitionerRole.location.display",
+        "short": "Nombre de la ubicación",
+        "definition": "Nombre completo de la ubicación de salud"
+      }
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "resourceType": "Encounter",
+  "id": "EncounterCL",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/EncounterCL"
+    ]
+  },
+  "type": [
+    {
+      "extension": [
+        {
+          "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposEncuentro",
+          "valueCode": "PR"
+        }
+      ],
+      "coding": [
+        {
+          "code": "PR",
+          "system": "https://minsal.cl/fhir/HD/CodeSystem/CSTiposEncuentroCL"
+        }
+      ]
+    }
+  ],
+  "serviceType": {
+    "extension": [
+      {
+        "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/TiposServicio",
+        "valueCode": "nutINTA"
+      }
+    ],
+    "coding": [
+      {
+        "code": "nutINTA",
+        "system": "https://minsal.cl/fhir/HD/CodeSystem/CSCodigoServicio"
+      }
+    ]
+  },
+  "participant": [
+    {
+      "extension": [
+        {
+          "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/VSEspecialidadesDeisCL",
+          "valueCoding": {
+            "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSEspecialidadesDeisCL",
+            "code": "01",
+            "display": "Anatomía Patológica"
+          }
+        }
+      ],
+      "type": [
+        {
+          "coding": [
+            {
+              "code": "PPRF",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+            }
+          ]
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/3020"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "code": "SPRF",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"
+            }
+          ]
+        }
+      ],
+      "extension": [
+        {
+          "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ContactoParticipantes",
+          "valueContactPoint": {
+            "value": "jose.12@gmail.com",
+            "system": "email"
+          }
+        }
+      ]
+    }
+  ],
+  "reasonCode": [
+    {
+      "extension": [
+        {
+          "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RazonNOrealizarse",
+          "valueCode": "pierdellam"
+        }
+      ],
+      "text": "Consulta médica sobre nutrición de alimentos"
+    }
+  ],
+  "extension": [
+    {
+      "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/NotasEncuentro",
+      "valueString": "Encuentro exitoso"
+    }
+  ],
+  "diagnosis": [
+    {
+      "extension": [
+        {
+          "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ObservacionesDiagnostico",
+          "valueString": "Buena atención"
+        }
+      ],
+      "condition": {
+        "display": "Condition IPS"
+      }
+    }
+  ],
+  "status": "planned",
+  "class": {
+    "code": "VR",
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "display": "Virtual"
+  },
+  "subject": {
+    "reference": "Patient/11"
+  },
+  "period": {
+    "start": "2022-06-23T00:00:00-03:00",
+    "end": "2022-06-23T00:50:00-03:00"
+  },
+  "length": {
+    "value": 50
+  },
+  "serviceProvider": {
+    "reference": "Organization/f003"
+  }
+}

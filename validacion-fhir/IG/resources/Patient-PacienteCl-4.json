@@ -1,0 +1,227 @@
+{
+  "resourceType": "Patient",
+  "id": "PacienteCl-4",
+  "meta": {
+    "versionId": "2",
+    "lastUpdated": "2021-07-13T00:22:41.166Z",
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "family": "Ortega",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family",
+            "valueString": "Callejas"
+          }
+        ]
+      },
+      "given": [
+        "Juan",
+        "José"
+      ]
+    },
+    {
+      "use": "usual",
+      "given": [
+        "JuanJo"
+      ]
+    }
+  ],
+  "identifier": [
+    {
+      "type": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:iso:std:iso:3166",
+                  "code": "152",
+                  "display": "Chile"
+                }
+              ]
+            }
+          }
+        ],
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "PPN",
+            "display": "Passport Number"
+          }
+        ]
+      },
+      "use": "official",
+      "system": "http://regcivil.cl/Validacion/Passport",
+      "value": "P102145874"
+    }
+  ],
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "Calle 4 Norte, 52, pieza 802"
+      ],
+      "_city": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ComunasCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodComunasCL",
+                  "code": "15101",
+                  "display": "Arica"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "_district": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ProvinciasCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodProvinciasCL",
+                  "code": "151",
+                  "display": "Arica"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "_state": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RegionesCl",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodRegionCL",
+                  "code": "15",
+                  "display": "Arica y Parinacota"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "_country": {
+        "extension": [
+          {
+            "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:iso:std:iso:3166",
+                  "code": "CL",
+                  "display": "Chile"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "extension": [
+    {
+      "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "urn:iso:std:iso:3166",
+            "code": "152",
+            "display": "Chile"
+          }
+        ]
+      }
+    }
+  ],
+  "active": true,
+  "telecom": [
+    {
+      "system": "email",
+      "value": "juan@jo.cl",
+      "use": "home"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-08-04",
+  "contact": [
+    {
+      "extension": [
+        {
+          "url": "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/IdContacto",
+          "extension": [
+            {
+              "url": "tutId",
+              "valueIdentifier": {
+                "type": {
+                  "coding": [
+                    {
+                      "code": "NNCHL",
+                      "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI",
+                      "display": "Chile"
+                    }
+                  ]
+                },
+                "system": "http://regcivil.cl/Validacion/RUN",
+                "value": "8987321-7"
+              }
+            },
+            {
+              "url": "docProc",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "urn:iso:std:iso:3166",
+                    "code": "152",
+                    "display": "Chile"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationship": [
+        {
+          "coding": [
+            {
+              "code": "N",
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+              "display": "Next-of-Kin"
+            }
+          ]
+        }
+      ],
+      "name": {
+        "use": "official",
+        "family": "Calleja",
+        "_family": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family",
+              "valueString": "Morales"
+            }
+          ]
+        },
+        "given": [
+          "Juana",
+          "Josefa"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resourceType": "PractitionerRole",
+  "id": "EspecialidadCL",
+  "meta": {
+    "profile": [
+      "https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CoreEspecialidadCl"
+    ]
+  },
+  "active": true,
+  "practitioner": {
+    "reference": "Practitioner/3240",
+    "display": "Johanna Rosa Silva Reyes"
+  },
+  "specialty": [
+    {
+      "coding": [
+        {
+          "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSEspecialidadesDeisCL",
+          "code": "06"
+        }
+      ],
+      "text": "Cirujano Cardiovascular"
+    },
+    {
+      "coding": [
+        {
+          "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSEspecialidadesDeisCL",
+          "code": "03"
+        }
+      ],
+      "text": "Médico Cardiólogo"
+    },
+    {
+      "coding": [
+        {
+          "system": "https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSEspecialidadesDeisCL",
+          "code": "30"
+        }
+      ],
+      "text": "Médico internista"
+    }
+  ]
+}
