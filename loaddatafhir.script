@@ -1,0 +1,7 @@
+zn "FHIR"
+set ServiceType="FHIRServer"
+Set ServiceName = "/fhir/r4"
+Set datadir = "/opt/irisapp/fhirdata/"
+zw ##class(HS.FHIRServer.Tools.DataLoader).SubmitResourceFiles(datadir,ServiceType,ServiceName)
+
+halt

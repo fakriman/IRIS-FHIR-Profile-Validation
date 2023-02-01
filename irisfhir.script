@@ -1,0 +1,39 @@
+zn "%SYS"
+Do ##class(Security.Users).UnExpireUserPasswords("*")
+
+zn "HSLIB"
+set namespace="FHIR"
+Set appKey = "/fhir/r4"
+Set strategyClass = "WebinarFeb.ValidationInteractionsStrategy"
+Set metadataConfigKey = $lb("hl7.fhir.r4.core@4.0.1")
+
+//Install a Foundation namespace and change to it
+Do ##class(HS.HC.Util.Installer).InstallFoundation(namespace)
+zn namespace
+
+// Install elements that are required for a FHIR-enabled namespace
+Do ##class(HS.FHIRServer.Installer).InstallNamespace()
+
+zn namespace
+// Load custom clases for Validation and implementation
+do $System.OBJ.ImportDir("/opt/irisapp/validacion-fhir/src", "*.cls", "cuk",, 1)
+// Configure some Registry Parameters
+do $System.OBJ.Load("/opt/irisapp/validacion-fhir/conf/HS-Registry-Config.xml")
+// do $System.OBJ.Load("/opt/irisapp/validacion-fhir/conf/HSFHIR-Registry-Config.xml")
+
+zn namespace
+// Install an instance of a FHIR Service into the current namespace
+Do ##class(HS.FHIRServer.Installer).InstallInstance(appKey, strategyClass, metadataConfigKey,"",0)
+
+zn namespace
+set myrepo = ##class(HS.FHIRServer.Repo).%OpenId(1)
+set myrepo.strategyClass = "WebinarFeb.ValidationInteractionsStrategy" 
+Do myrepo.%Save()
+
+set strategy = ##class(HS.FHIRServer.API.InteractionsStrategy).GetStrategyForEndpoint(appKey)
+set config = strategy.GetServiceConfigData()
+set config.DebugMode = 6
+set config.InteractionsStrategyClass = "WebinarFeb.ValidationInteractionsStrategy"
+do strategy.SaveServiceConfigData(config)
+
+halt

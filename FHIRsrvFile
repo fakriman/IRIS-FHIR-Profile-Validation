@@ -1,0 +1,37 @@
+FROM containers.intersystems.com/intersystems/irishealth-ml-community:2022.1.2.574.0 
+LABEL maintainer="Ariel Arias <ariel.arias@intersystems.com>"
+
+# Install some updates
+USER root
+
+RUN apt-get -y update
+
+# Install some aditional software may be needed later
+RUN apt-get install -y vim nano net-tools unzip wget sudo curl yarn iputils-ping links npm nodejs
+RUN npm install -g fsh-sushi --force
+
+USER ${ISC_PACKAGE_MGRUSER}
+
+RUN iris stop IRIS quietly
+
+## COPY ./Licencias/iris4h2023.key /usr/irissys/mgr/iris.key
+
+RUN iris start IRIS
+
+USER root
+RUN usermod -aG sudo ${ISC_PACKAGE_MGRUSER}
+
+WORKDIR /opt/irisapp
+RUN chown ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisapp
+USER ${ISC_PACKAGE_MGRUSER}
+
+COPY validacion-fhir validacion-fhir
+COPY data/fhir fhirdata
+COPY shared/jdk-11.0.1 jdk-11.0.1
+RUN chown ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisapp
+COPY irisfhir.script /tmp/irisfhir.script
+COPY habilitarusuarios.script /tmp/habilitarusuarios.script
+
+# run iris and initial 
+RUN iris start IRIS \
+	&& iris session IRIS < /tmp/habilitarusuarios.script

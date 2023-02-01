@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  iris:
+    build: 
+      context: .
+      dockerfile: FHIRsrvFile
+    restart: on-failure
+    container_name: fhirsrv
+    hostname: fhirsrv
+    environment:
+      ISC_PACKAGE_MGRUSER: irisowner
+      ISC_PACKAGE_IRISGROUP: irisowner
+      JAVA_HOME: /opt/irisapp/jdk-11.0.1
+    volumes:
+    - type: bind
+      source: ./shared/
+      target: /shared
+    ports: 
+      - 42782:1972
+      - 42783:52773
+      - 42784:53773
+    networks:
+      - irisenv-net
+networks:
+  irisenv-net:
+    external: true
