@@ -113,16 +113,27 @@ Webgateway. Entonces lo primero sería crear esta red con el comando:
 docker network create irisenv-net
 ```
 
+Podemos validar la existencia de la red:
+
+```bash
+docker network list
+```
+
+![Recursos compartidos Docker](img/networklist.png)
+
+
 Lo segundo, es que si miras el archivo ***fhirwebinar.yml*** hará uso 
 compartido de la carpeta "shared", entonces, asegúrate de que Docker tiene 
 acceso a la ruta donde dejes este repositorio y podrá compartirlo con las 
 imagenes que vas a usar:
 
-![Recursos compartidos Docker](img/dockeriscextension.png)
+Recursos Docker:
+
+![Recursos compartidos Docker](img/dockerfs.png)
 
 El archivo YML:
 
-![Volumenes](img/volumes.png)
+![Volumenes](img/volumesyml.png)
 
 Con estos dos pasos ya puedes iniciar la imagen:
 
@@ -176,9 +187,7 @@ configurarlo con los siguientes datos:
 
 | Parámetro | Valor |
 |-----------|-------|
-| Class path | 
-/opt/irisapp/validacion-fhir/lib/JavaValidatorFacade.jar:/opt/irisapp/validacion-fhir/lib/validator_cli.jar 
-|
+| Class path | /opt/irisapp/validacion-fhir/lib/JavaValidatorFacade.jar:/opt/irisapp/validacion-fhir/lib/validator_cli.jar |
 | Java Home Directory | /opt/irisapp/jdk-11.0.1/ |
 
 ![Configurar %Java Server](img/confjavaserver.png)
@@ -319,13 +328,8 @@ respuesta similar a *"Operation requires %Gateway_Object:USE privilege"*:
 
 ![Problema de permisos](img/Gateway_Object.png)
 
+[irisresources]: <http://localhost:42783/csp/sys/sec/%25CSP.UI.Portal.Resources.zen?$NAMESPACE=FHIR&$NAMESPACE=FHIR> "Configurar recursos IRIS"
 
+Por tratarse de un ambiente de desarrollo, lo más rápido es agregar al [recurso][irisresources] %Gateway_Object el permiso público de uso:
 
-
-
-
-
-
-
-
-
+![Objeto Gateway](img/javaobject.png)
