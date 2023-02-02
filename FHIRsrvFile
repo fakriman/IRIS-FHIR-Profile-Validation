@@ -27,11 +27,19 @@ USER ${ISC_PACKAGE_MGRUSER}
 
 COPY validacion-fhir validacion-fhir
 COPY data/fhir fhirdata
-COPY shared/jdk-11.0.1 jdk-11.0.1
-RUN chown -R ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisapp
-RUN unzip /shared/jdk-11.0.1.zip -d /opt/irisapp/
+COPY shared/jdk-11.0.1.zip /tmp/jdk-11.0.1.zip
 COPY irisfhir.script /tmp/irisfhir.script
 COPY habilitarusuarios.script /tmp/habilitarusuarios.script
+
+USER ${ISC_PACKAGE_MGRUSER}
+
+RUN unzip /tmp/jdk-11.0.1.zip -d /opt/irisapp/
+
+USER root 
+
+RUN chown -R ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisapp
+
+USER ${ISC_PACKAGE_MGRUSER}
 
 # run iris and initial 
 RUN iris start IRIS \
