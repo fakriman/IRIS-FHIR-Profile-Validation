@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "PacienteCL Ejemplo",
+			"name": "Ejemplo PacienteCL",
 			"request": {
 				"method": "POST",
 				"header": [

@@ -69,6 +69,10 @@ para validar archivos en formato de perfil FHIR (json normalmente).
 
 [Agregar/ajustar Operadores][operadores]: Si es necesario añadir o ajustar un operador al servidor, en este link encontraremos la documentación y pasos de cómo lograrlo.
 
+[clig]: <https://github.com/fakriman/IRIS-FHIR-Profile-Validation> "Guía Core 1.7.0 CL"
+
+[Guía Implementación Chile][clig]: Guía de implementación del capítulo HL7 Chile, utilizada en la connectathon del pasado mes de Enero 2023.
+
 ## Pasos de Implementar esta guía
 
 ### Clonar este repositorio
