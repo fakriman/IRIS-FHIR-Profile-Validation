@@ -65,6 +65,10 @@ resolver tener instalado NodeJS.
 [Cliente validador FHIR][validatorcli]: Una herramienta abierta, en Java, 
 para validar archivos en formato de perfil FHIR (json normalmente).
 
+[operadores]: <https://docs.intersystems.com/irisforhealthlatest/csp/docbook/DocBook.UI.Page.cls?KEY=HXFHIR_server_customize_operations> "Operadores FHIR"
+
+[Agregar/costomizxar Operadores][operadores]: Si es necesario añadir o ajustar un operador al servidor, en este link encontraremos la documentación y pasos de cómo lograrlo.
+
 ## Pasos de Implementar esta guía
 
 ### Clonar este repositorio
