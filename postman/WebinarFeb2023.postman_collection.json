@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "996a560e-739a-4eaf-8dba-f0d1ba97724a",
+		"name": "WebinarFeb2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2914919"
+	},
+	"item": [
+		{
+			"name": "PacienteCL Ejemplo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json+fhir",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"resourceType\": \"Patient\",\n  \"id\": \"PacienteCL\",\n  \"meta\": {\n    \"profile\": [\n      \"https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CorePacienteCl\"\n    ]\n  },\n  \"text\": {\n    \"status\": \"generated\",\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\"><p><b>Xime </b> female, DoB: 1983-03-24 ( Chile: 15.236.327-k (OFFICIAL))</p></div>\"\n  },\n  \"identifier\": [\n    {\n      \"use\": \"official\",\n      \"type\": {\n        \"extension\": [\n          {\n            \"url\": \"https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises\",\n            \"valueCodeableConcept\": {\n              \"coding\": [\n                {\n                  \"system\": \"urn:iso:std:iso:3166\",\n                  \"code\": \"152\",\n                  \"display\": \"Chile\"\n                }\n              ]\n            }\n          }\n        ],\n        \"coding\": [\n          {\n            \"system\": \"https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI\",\n            \"code\": \"NNCHL\",\n            \"display\": \"Chile\"\n          }\n        ]\n      },\n      \"system\": \"http://regcivil.cl/Validacion/RUN\",\n      \"value\": \"15.236.327-k\"\n    }\n  ],\n  \"active\": true,\n  \"name\": [\n    {\n      \"use\": \"official\",\n      \"family\": \"Rosales\",\n      \"_family\": {\n        \"extension\": [\n          {\n            \"url\": \"http://hl7.org/fhir/StructureDefinition/humanname-mothers-family\",\n            \"valueString\": \"Bosh\"\n          }\n        ]\n      },\n      \"given\": [\n        \"Marietta\",\n        \"María\",\n        \"Ximena\"\n      ]\n    },\n    {\n      \"use\": \"usual\",\n      \"given\": [\n        \"Xime\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"phone\",\n      \"value\": \"943561833\",\n      \"use\": \"mobile\"\n    },\n    {\n      \"system\": \"email\",\n      \"value\": \"mariRosal@mimail.com\",\n      \"use\": \"work\"\n    }\n  ],\n  \"gender\": \"female\",\n  \"birthDate\": \"1983-03-24\",\n  \"address\": [\n    {\n      \"use\": \"home\",\n      \"line\": [\n        \"Av Los Chirimoyos, 32, casa 4\"\n      ],\n      \"_city\": {\n        \"extension\": [\n          {\n            \"url\": \"https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ComunasCl\",\n            \"valueCodeableConcept\": {\n              \"coding\": [\n                {\n                  \"system\": \"https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodComunasCL\",\n                  \"code\": \"05602-4030\",\n                  \"display\": \"Algarrobo\"\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"_district\": {\n        \"extension\": [\n          {\n            \"url\": \"https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/ProvinciasCl\",\n            \"valueCodeableConcept\": {\n              \"coding\": [\n                {\n                  \"system\": \"https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodProvinciasCL\",\n                  \"code\": \"056\",\n                  \"display\": \"San Antonio\"\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"_state\": {\n        \"extension\": [\n          {\n            \"url\": \"https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/RegionesCl\",\n            \"valueCodeableConcept\": {\n              \"coding\": [\n                {\n                  \"system\": \"https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodRegionCL\",\n                  \"code\": \"05\",\n                  \"display\": \"Valparaíso\"\n                }\n              ]\n            }\n          }\n        ]\n      },\n      \"_country\": {\n        \"extension\": [\n          {\n            \"url\": \"https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/CodigoPaises\",\n            \"valueCodeableConcept\": {\n              \"coding\": [\n                {\n                  \"system\": \"urn:iso:std:iso:3166\",\n                  \"code\": \"CL\",\n                  \"display\": \"Chile\"\n                }\n              ]\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"contact\": [\n    {\n      \"extension\": [\n        {\n          \"extension\": [\n            {\n              \"url\": \"tutId\",\n              \"valueIdentifier\": {\n                \"type\": {\n                  \"coding\": [\n                    {\n                      \"system\": \"https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoDNI\",\n                      \"code\": \"NNCHL\",\n                      \"display\": \"Chile\"\n                    }\n                  ]\n                },\n                \"system\": \"http://regcivil.cl/Validacion/RUN\",\n                \"value\": \"8987321-7\"\n              }\n            },\n            {\n              \"url\": \"docProc\",\n              \"valueCodeableConcept\": {\n                \"coding\": [\n                  {\n                    \"system\": \"urn:iso:std:iso:3166\",\n                    \"code\": \"152\",\n                    \"display\": \"Chile\"\n                  }\n                ]\n              }\n            }\n          ],\n          \"url\": \"https://hl7chile.cl/fhir/ig/CoreCL/StructureDefinition/IdContacto\"\n        }\n      ],\n      \"relationship\": [\n        {\n          \"coding\": [\n            {\n              \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0131\",\n              \"code\": \"N\",\n              \"display\": \"Next-of-Kin\"\n            }\n          ]\n        }\n      ],\n      \"name\": {\n        \"use\": \"official\",\n        \"family\": \"Calleja\",\n        \"_family\": {\n          \"extension\": [\n            {\n              \"url\": \"http://hl7.org/fhir/StructureDefinition/humanname-mothers-family\",\n              \"valueString\": \"Morales\"\n            }\n          ]\n        },\n        \"given\": [\n          \"Juana\",\n          \"Josefa\"\n        ]\n      }\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://hl7chile.cl/fhir/ig/CoreCL/CodeSystem/CSCodigoslenguaje\",\n            \"code\": \"es-CL\",\n            \"display\": \"Spanish\"\n          }\n        ]\n      }\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"Organization/ORG1\",\n      \"display\": \"Hospital de la Vida\"\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{urlfhir}}Patient/$validate",
+					"host": [
+						"{{urlfhir}}Patient"
+					],
+					"path": [
+						"$validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListarPacientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlfhir}}Patient",
+					"host": [
+						"{{urlfhir}}Patient"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlfhir",
+			"value": "http://localhost:42783/fhir/r4/",
+			"type": "string"
+		}
+	]
+}
